@@ -58,6 +58,8 @@ development/    experiments (run from the repo root)
   train_policy.py     trains the final policy on dev -> models/policy_dev_set_natural_4D.joblib
   ablation_study.py   leave-one-feature-out, θ re-tuned per variant, paired bootstrap vs. full model
   evaluate.py         compares saved result files: baselines, controls, per-class, per-source (CPU, seconds)
+  evaluate_results.py per-k breakdown, confusion matrix, k-only rule, zero-feature check -> results/test_set_1_4D_eval.json
+  theta_analysis.py   theta locked vs. re-tuned for every ablation variant, dev and test F1 over the theta grid
 baselines/
   baseline_vanilla.py   zero-shot Llama 3.1 router (needs llama.cpp server on port 8080)
   baseline_crag_v5.py   Static-CRAG: fine-tuned T5 evaluator, web search disabled (needs local_models/checkpoint-7059 + server on 8080)
@@ -95,6 +97,7 @@ PubMedQA's "maybe" decisions.
 | `test_set_1_4D_summary.json` | output of `development/evaluate.py --save` (main comparison table) |
 | `test_set_1_4D_eval.json` | confusion matrix, per-k breakdown, k-only rule (from the 31 Oct run) |
 | `test_set_1_4D_ablation_results.json` | ablation: every variant with θ, ΔF1, 95% CI, per-source and per-k accuracy |
+| `test_set_1_4D_theta_analysis.json` | output of `development/theta_analysis.py`, run on a laptop CPU on 3 Nov 2026 (log: `logs/theta_analysis_20261103.log`). Features were re-extracted on CPU with unseeded language detection, so test F1 differs slightly from the server ablation for some variants |
 | `test_set_1_4D_grid_search_full.json` | all 18,480 grid configurations (dev, 5-fold mean ± std) |
 | `test_set_1_4D_grid_search_tfidf_ext.json` | extended TF-IDF grid (15,120 configurations) |
 | `test_set_1_results_final.json` | previous 6D policy, kept as the 6D reference |
