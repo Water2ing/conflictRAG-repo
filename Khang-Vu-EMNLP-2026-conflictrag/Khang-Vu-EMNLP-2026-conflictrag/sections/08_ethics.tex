@@ -1,0 +1,13 @@
+\section{Ethics Statement}
+\label{sec:ethics}
+
+\method{} is designed to reduce hallucination and miscalibrated confidence in RAG systems, with direct positive implications for high-stakes deployments. Several ethical considerations merit explicit acknowledgment.
+
+\paragraph{Abstention and access.}
+A system that abstains more often may provide less useful responses to users who lack alternative information sources. This disproportionately affects users in low-resource information environments who rely on automated systems as primary knowledge access points. Deployers should tune the abstention threshold $\theta$ with awareness of their user population's tolerance for non-answers, and should accompany abstention responses with actionable guidance toward alternative sources.
+
+\paragraph{Conflict disclosure and dual-use.}
+Explicit conflict disclosure (the \textsc{Disclose} action) surfaces contradictions in retrieved evidence that users might otherwise not notice. While this is generally beneficial, it could also amplify the salience of disinformation by framing it as ``evidence in conflict'' with factual content. Systems using \method{} in public-facing deployments should consider whether conflict disclosure could be gamed by adversarial content injection.
+
+\paragraph{Annotation and data use.}
+The 200-example manual error annotation was conducted by the paper's authors and is subject to researcher bias. No crowd workers or paid annotators were used; had they been, fair compensation and content warnings for potentially distressing queries would be essential. All datasets used are publicly available with licenses permitting research use; we will release our evaluation partitions and feature extraction code to support reproducibility.

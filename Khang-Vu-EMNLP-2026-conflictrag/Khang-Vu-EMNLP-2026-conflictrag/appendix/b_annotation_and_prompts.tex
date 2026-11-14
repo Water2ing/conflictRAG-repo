@@ -1,0 +1,33 @@
+\section{Annotation Protocol and Prompt Templates}
+\label{app:annotation}
+\label{app:prompts}
+
+\paragraph{Policy label annotation.}
+For datasets without gold policy labels (WhoQA and FaithDial), we assigned action labels from $\mathcal{A} = \{\textsc{Answer}, \textsc{Disclaimer}, \textsc{Disclose}, \textsc{Abstain}\}$ using the following procedure. Two annotators (the paper authors) independently labeled a shared sample of 200 examples using the rubric below. Cohen's $\kappa$ was 0.71 on this shared sample. The remaining development examples were split evenly and labeled by a single annotator each, with cross-check sampling at 10\% to detect drift.
+
+\noindent \textbf{Annotation rubric:}
+\begin{itemize}
+\item \textsc{Answer}: At least two retrieved passages directly support a consistent answer, with no contradicting passage.
+\item \textsc{Disclaimer}: Only one passage supports the answer, or the supporting passage contains hedged language (``may'', ``reportedly'', ``some sources suggest'').
+\item \textsc{Disclose}: At least two passages make directly contradictory factual claims about the question's target entity.
+\item \textsc{Abstain}: No retrieved passage is topically relevant to the question, or the question asks for a specific fact that none of the passages address.
+\end{itemize}
+
+\paragraph{RAG prompt template.}
+The following prompt is used for the \textsc{Answer} action:
+\begin{quote}
+\small
+\texttt{You are a factual question-answering assistant. Use ONLY the following passages to answer the question. If the passages do not contain enough information to answer, say ``I cannot answer based on the provided passages.''}\\
+\texttt{Passages: \{passages\}}\\
+\texttt{Question: \{question\}}\\
+\texttt{Answer:}
+\end{quote}
+
+\paragraph{GPT-4 Verifier prompt.}
+The GPT-4 Verifier uses the following structured prompt:
+\begin{quote}
+\small
+\texttt{You will classify how a RAG system should respond given the following question and retrieved passages. Choose one action from: ANSWER, DISCLAIMER, DISCLOSE, ABSTAIN. Return a JSON object with fields: action, rationale (one sentence), confidence (0.0--1.0).}\\
+\texttt{Question: \{question\}}\\
+\texttt{Passages: \{passages\}}
+\end{quote}

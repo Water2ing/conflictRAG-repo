@@ -1,0 +1,13 @@
+claim,value,source,status
+Control,53.4,fixed-seed simulator,Synthetic example result - replace before submission
+Cheap baseline,58.2,fixed-seed simulator,Synthetic example result - replace before submission
+Strong API,61.3,fixed-seed simulator,Synthetic example result - replace before submission
+ConflictRAG,63.6,fixed-seed simulator,Synthetic example result - replace before submission
+Full system,63.6,fixed-seed simulator,Synthetic example result - replace before submission
+No protocol control,61.1,fixed-seed simulator,Synthetic example result - replace before submission
+No uncertainty,60.7,fixed-seed simulator,Synthetic example result - replace before submission
+No validation filter,61.3,fixed-seed simulator,Synthetic example result - replace before submission
+Seen-style,62.7,fixed-seed simulator,Synthetic example result - replace before submission
+Hard-language/domain,59.9,fixed-seed simulator,Synthetic example result - replace before submission
+Noisy evidence/labels,61.1,fixed-seed simulator,Synthetic example result - replace before submission
+Fresh/shifted,60.8,fixed-seed simulator,Synthetic example result - replace before submission

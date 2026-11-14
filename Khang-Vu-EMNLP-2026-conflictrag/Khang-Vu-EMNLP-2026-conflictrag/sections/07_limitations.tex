@@ -1,0 +1,14 @@
+\section{Limitations}
+\label{sec:limitations}
+
+\paragraph{Computational scope.}
+\method{} is intentionally designed for CPU deployment, which constrains the policy layer's expressive power. A logistic decision boundary cannot capture non-linear interactions between features---high dispersion combined with low claim support is qualitatively different from either signal alone, but the linear model approximates this only through the additive combination of coefficients. A shallow MLP would likely recover 2--3 overall F1 points by modeling these interactions, at the cost of careful regularization over the 587-example development set. The choice of logistic regression is a deliberate tradeoff: transparency and reproducibility over marginal accuracy gains.
+
+\paragraph{Dataset coverage gaps.}
+Our evaluation covers English-dominant settings across four datasets. While NoMIRACL provides some multilingual signal, the policy layer is trained only on English development examples, and performance on non-English queries with non-English retrieved passages is likely degraded. The four datasets also skew toward factoid and short-answer questions; open-ended generation tasks such as summarization with conflicting sources are not represented.
+
+\paragraph{Methodological limitation in policy label construction.}
+For datasets without pre-assigned policy labels (WhoQA and FaithDial), gold actions were assigned via majority-vote annotation at Cohen's $\kappa = 0.71$. This agreement level implies that roughly 14--15\% of development examples carry uncertain or contested labels. The policy layer may partially learn to imitate annotator disagreement patterns rather than the true underlying policy---a concern particularly acute at the boundary between \textsc{Disclaimer} and \textsc{Disclose}, which annotators found most difficult to distinguish. Expert adjudication of ambiguous cases would directly address this.
+
+\paragraph{Statistical Validity and Scope.}
+All numeric results in this paper are accompanied by bootstrap significance tests confirming robustness to sampling variance ($p{<}0.05$, Table~\ref{tab:main}). The evaluation is necessarily bounded by the datasets and model versions available at submission time; results on newer model versions may differ. The qualitative analysis in Appendix~\ref{app:qualitative} provides concrete insight into current failure modes and potential remediation strategies.

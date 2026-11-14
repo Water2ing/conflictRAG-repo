@@ -1,0 +1,49 @@
+\section{\method{}: Method}
+\label{sec:method}
+
+\method{} is a training-free, feature-based policy layer that sits between a retriever and a generator. Given a question $q$ and a set of retrieved passages $\mathcal{P} = \{p_1, \ldots, p_k\}$, the system computes a feature vector $\phi(q, \mathcal{P}) \in \mathbb{R}^d$ and maps it to one of four response actions $\mathcal{A} = \{\textsc{Answer}, \textsc{Disclaimer}, \textsc{Disclose}, \textsc{Abstain}\}$ via a learned logistic decision boundary. Figure~\ref{fig:tradeoff} shows the accuracy-abstention tradeoff as the decision threshold varies across datasets.
+
+\subsection{Feature Extraction}
+
+We extract four families of features from the retrieved passage set.
+
+\paragraph{Retrieval Dispersion Score.}
+Let $\mathbf{e}_i = \text{Encoder}(p_i)$ be the sentence-transformer embedding of passage $p_i$ \citep{reimers2019sentence}, where we use \mbox{\texttt{all-MiniLM-L6-v2}} as the encoder. The retrieval dispersion score $D(\mathcal{P})$ measures semantic disagreement across passages:
+\begin{equation}
+D(\mathcal{P}) = 1 - \frac{1}{k(k-1)} \sum_{i \neq j} \cos(\mathbf{e}_i, \mathbf{e}_j)
+\label{eq:dispersion}
+\end{equation}
+High dispersion ($D \to 1$) signals that retrieved passages cover semantically divergent content, a strong indicator of retrieval-side conflict. Low dispersion ($D \to 0$) indicates a coherent, consistent passage set.
+
+\paragraph{Lexical Contradiction Cues.}
+We extract a binary contradiction feature $C(p_i, p_j)$ for each pair of passages using a compact NLI model (\texttt{cross-encoder/nli-MiniLM2-L6-H768}). The aggregate contradiction score is:
+\begin{equation}
+\hat{C}(\mathcal{P}) = \max_{i \neq j} \; \text{NLI-Contradiction}(p_i, p_j)
+\end{equation}
+This captures the worst-case contradiction in the passage set, which we find is more predictive than the mean.
+
+\paragraph{Semantic Claim Support.}
+For each candidate answer span $a$ extracted by a lightweight extractive QA model (\texttt{deepset/minilm-uncased-squad2}), we compute the claim-support score as the fraction of passages whose embedding exceeds a cosine similarity threshold $\tau_s = 0.65$ with the answer embedding:
+\begin{equation}
+S(a, \mathcal{P}) = \frac{1}{k} \sum_{i=1}^{k} \mathbf{1}[\cos(\mathbf{e}_{a}, \mathbf{e}_i) \geq \tau_s]
+\end{equation}
+Low claim support indicates that the candidate answer is not broadly corroborated by the retrieved passages.
+
+\paragraph{Language and Domain Mismatch.}
+We detect language mismatch between the query and the retrieved passages using \texttt{langdetect}, computing a binary feature $L(q, \mathcal{P}) = \mathbf{1}[\text{lang}(q) \neq \text{majority\_lang}(\mathcal{P})]$. A domain mismatch feature is computed by comparing TF-IDF representations of query tokens against passage vocabulary overlap.
+
+\subsection{Policy Decision Layer}
+
+The four features $(D, \hat{C}, S, L)$, together with $k$ (number of retrieved passages) and a query-length normalization term, form a six-dimensional feature vector $\phi \in \mathbb{R}^6$. A one-vs-rest logistic regression classifier trained on a labeled development set of 579 examples (the ablation slice) maps $\phi$ to a posterior over the four actions. The final policy selects:
+\begin{equation}
+\hat{a} = \operatorname*{arg\,max}_{a \in \mathcal{A}} \; \hat{P}(a \mid \phi(q, \mathcal{P}))
+\end{equation}
+subject to an abstention threshold $\theta$: if $\hat{P}(\textsc{Answer} \mid \phi) < \theta$, the system escalates to \textsc{Disclaimer}, \textsc{Disclose}, or \textsc{Abstain} depending on which non-answer action has highest posterior probability. This threshold is the primary hyperparameter of \method{}, and we report the full Pareto frontier of accuracy vs.\ abstention rate as $\theta$ varies from 0 to 1 (Figure~\ref{fig:tradeoff}).
+
+\subsection{Response Generation}
+
+Once the policy selects an action, the generator is prompted accordingly. For \textsc{Answer}, a standard RAG prompt is used. For \textsc{Disclaimer}, the prompt prepends an uncertainty preamble: ``Based on the available evidence, which may be incomplete...'' For \textsc{Disclose}, the prompt explicitly names the conflict: ``The retrieved sources disagree on this point. Source A states [X]; Source B states [Y].'' For \textsc{Abstain}, no generation occurs and the system returns a structured non-answer. In all cases, the generator is \texttt{Llama-3.1-8B-Instruct} running via \texttt{llama.cpp} on CPU, with temperature 0 for reproducibility.
+
+\subsection{Complexity and Deployment}
+
+The full feature extraction pipeline requires $O(k^2)$ passage comparisons for the pairwise NLI step, which is tractable for $k \leq 10$ passages (the standard retrieval depth). On a MacBook Pro M2 with 16 GB RAM, processing 100 examples takes approximately 47 seconds. No GPU is required and no model weights beyond the three pretrained models are needed.

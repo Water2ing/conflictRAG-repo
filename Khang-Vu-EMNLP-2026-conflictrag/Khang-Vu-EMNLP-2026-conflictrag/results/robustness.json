@@ -1,0 +1,21 @@
+{
+  "synthetic_label": "Synthetic example result - replace before submission",
+  "robustness": [
+    {
+      "slice": "Seen-style",
+      "score": 62.7
+    },
+    {
+      "slice": "Hard-language/domain",
+      "score": 59.9
+    },
+    {
+      "slice": "Noisy evidence/labels",
+      "score": 61.1
+    },
+    {
+      "slice": "Fresh/shifted",
+      "score": 60.8
+    }
+  ]
+}

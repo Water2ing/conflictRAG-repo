@@ -1,0 +1,14 @@
+\section{Reproducibility Details}
+\label{app:reproducibility}
+
+\paragraph{Software and hardware.}
+All experiments were run on a MacBook Pro M2 (16 GB RAM, CPU only). Key library versions: Python 3.11.7, \texttt{scikit-learn} 1.4.2, \texttt{sentence-transformers} 2.7.0, \texttt{transformers} 4.40.0, \texttt{llama-cpp-python} 0.2.56, \texttt{langdetect} 1.0.9, \texttt{numpy} 1.26.4, \texttt{pandas} 2.2.1. Random seeds are fixed to 42 for all scikit-learn operations; the generator uses temperature 0 throughout.
+
+\paragraph{Model checkpoints.}
+Embedding model: \texttt{sentence-transformers/all-MiniLM-L6-v2} (HuggingFace Hub). NLI model: \texttt{cross-encoder/nli-MiniLM2-L6-H768}. Extractive QA model: \texttt{deepset/minilm-uncased-squad2}. Generator: \texttt{Meta-Llama-3.1-8B-Instruct.Q4\_K\_M.gguf} (4-bit quantized, llama.cpp format). GPT-4 Verifier experiments use \texttt{gpt-4-turbo-2024-04-09} via the OpenAI API; these are excluded from the CPU-only timing measurements.
+
+\paragraph{Dataset access.}
+WhoQA is available at \url{https://github.com/whichxkj/WhoQA}. NoMIRACL is available via the MIRACL dataset page on HuggingFace (\texttt{miracl/miracl}). ConflictQA is available at \url{https://github.com/xiye17/conflictqa}. FaithDial is available at \url{https://github.com/McGill-NLP/FaithDial}. All datasets are used under their original research licenses.
+
+\paragraph{Result files.}
+The \texttt{results/} directory contains JSON and CSV traces with per-example inputs, feature vectors, policy decisions, generated outputs, and metric values. Figures are regenerated from the data in \texttt{scripts/generate\_figures.py}.

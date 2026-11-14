@@ -1,0 +1,50 @@
+\section{Qualitative Examples}
+\label{app:qualitative}
+
+This appendix illustrates \method{}'s behavior on representative cases from the evaluation set.
+
+\subsection{Representative Success Cases}
+
+The following examples show cases where \method{} correctly handles inputs that challenge simpler protocols.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{p{3.5cm}p{3.5cm}p{2.5cm}}
+\toprule
+Input & \method{} Output & Baseline Output \\
+\midrule
+\emph{Q: What year did [politician] first take office?} Retrieved passages: one states ``elected in 2004,'' another states ``first served from 2006.'' Dispersion $= 0.71$, NLI contradiction detected. & \textsc{ConflictDisclosure}: ``Sources conflict on the start year (2004 vs.\ 2006). The answer cannot be confirmed without additional verification.'' & NLI Conflict Detector produces \textsc{Disclaimer} (lower confidence) without specifying the conflicting values. \\
+\addlinespace
+\emph{Q: Is drug X approved for pediatric use?} Retrieved passages: a 2019 guideline states ``not approved'' and a 2022 update states ``approved for ages 6+.'' Dispersion $= 0.83$, claim support $= 0.31$. & \textsc{ConflictDisclosure}: ``Evidence conflicts: a 2019 source indicates no approval, while a 2022 source reports approval for children aged 6 and older. Consult current regulatory guidance.'' & GPT-4o-Direct generates a confident answer citing only the newer source, producing an unsupported generation error. \\
+\bottomrule
+\end{tabular}
+\caption{Success cases: \method{} correctly handles these examples while the baseline (top-scoring prior method from Table~\ref{tab:main}) fails or expresses lower confidence.}
+\label{tab:qual-success}
+\end{table}
+
+\subsection{Failure Analysis}
+
+We identify two recurring failure patterns:
+
+\paragraph{Failure Pattern 1: Borderline Cases.}
+\method{} occasionally fails on cases where retrieved passages are topically adjacent but do not directly address the question, causing the dispersion score to remain low even though no passage supports the claim. Example: for the question ``What was the population of [city] in 1990?'' the retriever surfaces passages about the city's demographics in 2000 and 2010 but not 1990. Both passages are coherent and cover the same topic, so pairwise dispersion is low ($= 0.18$), and NLI detects no contradiction. The policy therefore selects \textsc{Answer}, but the generator hallucinates a 1990 figure. The expected action is \textsc{Abstain} (no direct evidence). This failure occurs because the dispersion and NLI signals measure passage-to-passage disagreement but do not directly measure the presence of the specific claim in the evidence. Future work could address this by incorporating an explicit claim grounding check: if no retrieved sentence achieves semantic similarity above a threshold to the question's target entity, trigger \textsc{Abstain} regardless of dispersion score.
+
+\paragraph{Failure Pattern 2: Distribution Shift.}
+Performance degrades on conversational inputs from FaithDial where prior dialogue turns introduce implicit context that retrieved passages do not cover. Example: in a multi-turn dialogue about a historical figure, a follow-up question ``And how did that influence his later work?'' relies on previously established referents (``that'' = a specific event discussed two turns earlier). The retrieved passages address the figure's work in isolation, so pairwise dispersion is moderate and NLI signals are ambiguous. \method{} selects \textsc{Answer} but the generator produces content only partially grounded in the retrieved passages (unsupported generation error). This is consistent with the FaithDial hallucination rate of 19.6\% (vs.\ 9.7\% on NoMIRACL) and the limitations discussed in Section~\ref{sec:limitations}.
+
+\subsection{Comparison with Best Baseline}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{p{3.0cm}p{2.8cm}p{2.8cm}}
+\toprule
+Input & \method{} & Best Baseline \\
+\midrule
+\emph{Q: Who is the current CEO of [company]?} Three retrieved passages name three different individuals, all retrieved from different years (2018, 2021, 2024). Dispersion $= 0.79$, NLI: two passage-pairs in contradiction. & \textsc{ConflictDisclosure}: ``Sources name different individuals across different years: [Person A] (2018), [Person B] (2021), and [Person C] (2024). The most recent source indicates [Person C]; verify against current records.'' Correct action with full conflict transparency. & GPT-4 Verifier selects \textsc{Disclaimer}: ``The answer may be outdated.'' This is less informative --- it signals uncertainty without disclosing the specific nature of the conflict or the candidate answer from the most recent source. \\
+\bottomrule
+\end{tabular}
+\caption{Direct comparison on a challenging example where \method{}'s four-action policy enables a precise \textsc{ConflictDisclosure} response, while the best baseline (GPT-4 Verifier) issues a less informative \textsc{Disclaimer} that does not expose the conflicting values.}
+\label{tab:qual-comparison}
+\end{table}

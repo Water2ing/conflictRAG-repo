@@ -1,0 +1,132 @@
+{
+  "paper": "ConflictRAG",
+  "synthetic_label": "Synthetic example result - replace before submission",
+  "rows": [
+    {
+      "method": "Control",
+      "quality": 53.4,
+      "risk": 33.6,
+      "cost": 2.1
+    },
+    {
+      "method": "Cheap baseline",
+      "quality": 58.2,
+      "risk": 23.0,
+      "cost": 1.51
+    },
+    {
+      "method": "Strong API",
+      "quality": 61.3,
+      "risk": 25.8,
+      "cost": 0.68
+    },
+    {
+      "method": "ConflictRAG",
+      "quality": 63.6,
+      "risk": 13.9,
+      "cost": 1.4
+    }
+  ],
+  "ablation": [
+    {
+      "component": "Full system",
+      "score": 63.6
+    },
+    {
+      "component": "No protocol control",
+      "score": 61.1
+    },
+    {
+      "component": "No uncertainty",
+      "score": 60.7
+    },
+    {
+      "component": "No validation filter",
+      "score": 61.3
+    }
+  ],
+  "robustness": [
+    {
+      "slice": "Seen-style",
+      "score": 62.7
+    },
+    {
+      "slice": "Hard-language/domain",
+      "score": 59.9
+    },
+    {
+      "slice": "Noisy evidence/labels",
+      "score": 61.1
+    },
+    {
+      "slice": "Fresh/shifted",
+      "score": 60.8
+    }
+  ],
+  "calibration": [
+    {
+      "bucket": "0.0-0.25",
+      "expected": 0.18,
+      "observed": 0.21
+    },
+    {
+      "bucket": "0.25-0.50",
+      "expected": 0.38,
+      "observed": 0.43
+    },
+    {
+      "bucket": "0.50-0.75",
+      "expected": 0.62,
+      "observed": 0.65
+    },
+    {
+      "bucket": "0.75-1.00",
+      "expected": 0.86,
+      "observed": 0.9
+    }
+  ],
+  "dataset_matrix": [
+    {
+      "slice": "Primary benchmark",
+      "items": 1117,
+      "validation": "automatic + audit",
+      "purpose": "main comparison"
+    },
+    {
+      "slice": "Human/expert subset",
+      "items": 266,
+      "validation": "human adjudication",
+      "purpose": "calibration"
+    },
+    {
+      "slice": "Robustness slice",
+      "items": 432,
+      "validation": "filtered synthetic",
+      "purpose": "stress test"
+    },
+    {
+      "slice": "Ablation slice",
+      "items": 579,
+      "validation": "cached replay",
+      "purpose": "component isolation"
+    }
+  ],
+  "error_table": [
+    {
+      "error": "unsupported output",
+      "share": 9.7
+    },
+    {
+      "error": "semantic drift",
+      "share": 5.7
+    },
+    {
+      "error": "retrieval/selection miss",
+      "share": 12.5
+    },
+    {
+      "error": "calibration failure",
+      "share": 6.1
+    }
+  ]
+}

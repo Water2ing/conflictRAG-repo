@@ -1,0 +1,21 @@
+{
+  "synthetic_label": "Synthetic example result - replace before submission",
+  "ablation": [
+    {
+      "component": "Full system",
+      "score": 63.6
+    },
+    {
+      "component": "No protocol control",
+      "score": 61.1
+    },
+    {
+      "component": "No uncertainty",
+      "score": 60.7
+    },
+    {
+      "component": "No validation filter",
+      "score": 61.3
+    }
+  ]
+}

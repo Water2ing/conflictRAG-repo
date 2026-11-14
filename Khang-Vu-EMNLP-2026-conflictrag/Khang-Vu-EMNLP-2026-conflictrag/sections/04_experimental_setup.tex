@@ -1,0 +1,52 @@
+\section{Experimental Setup}
+\label{sec:setup}
+
+\subsection{Datasets}
+
+We evaluate across four datasets covering diverse retrieval failure modes. Table~\ref{tab:dataset-matrix} summarizes their sizes, validation procedures, and roles in our evaluation.
+
+\textbf{WhoQA} \citep{whoqa2025} is a multi-hop question-answering benchmark in which each question is paired with two retrieved passages that may or may not agree. Multi-hop QA benchmarks such as HotpotQA \citep{yang2018hotpotqa} established that multi-document reasoning is qualitatively harder than single-passage QA; WhoQA extends this by framing disagreement as a policy question. We use the full evaluation split (612 examples), of which 41\% have conflicting passages as defined by the dataset's gold labels.
+
+\textbf{NoMIRACL nonrelevant} \citep{nomiracl2024} is the nonrelevant subset of the multilingual MIRACL benchmark, containing questions for which all retrieved passages are topically irrelevant. We use 438 English examples; the ground-truth correct action for all examples is \textsc{Abstain} or \textsc{Disclaimer}.
+
+\textbf{ConflictQA} \citep{conflictqa2023} provides 583 questions, each paired with synthetically constructed contradictory passages. This is the most controlled setting for measuring conflict-detection precision.
+
+\textbf{FaithDial} \citep{dziri2022faithdial} is a dialogue-based grounding benchmark in which each system turn must be faithful to a provided Wikipedia passage. We use the test split (761 examples) as a proxy for the disclaimer/abstention decision in conversational RAG.
+
+We construct the main evaluation set by combining all four datasets (3,073 total examples). For datasets without pre-assigned policy labels, we use a majority-vote annotation procedure described in Appendix~\ref{app:annotation}, achieving inter-annotator agreement of Cohen's $\kappa = 0.71$ \citep{cohen1960coefficient} on a 200-example sample.
+
+\subsection{Baselines}
+
+We compare \method{} against five baselines:
+
+\textbf{No-filter RAG} always routes to \textsc{Answer} regardless of retrieval quality, using the same Llama-3.1-8B-Instruct generator \citep{dubey2024llama3}.
+
+\textbf{Naive Abstain} always returns \textsc{Abstain}, representing the degenerate safety-first policy.
+
+\textbf{Confidence Threshold} uses the generator's normalized log-probability of the answer span as a proxy for confidence; the system abstains when this score falls below a tuned threshold $\theta_c = 0.42$.
+
+\textbf{NLI Conflict Detector} uses the same \texttt{cross-encoder/nli-MiniLM2-L6-H768} NLI model as \method{}, but applies a single binary rule: if any passage pair has contradiction probability $> 0.6$, return \textsc{Disclose}; otherwise return \textsc{Answer}.
+
+\textbf{GPT-4 Verifier} sends each question-passage pair to \texttt{gpt-4-turbo-2024-04-09} with a structured verification prompt (see Appendix~\ref{app:prompts}) and uses the model's judgment to select an action. This is our highest-cost oracle baseline.
+
+\subsection{Metrics}
+
+We evaluate with six metrics:
+
+\textbf{Answer F1} (token overlap) \citep{rajpurkar2016squad} on examples where the ground-truth action is \textsc{Answer}, measuring accuracy on answerable questions only.
+
+\textbf{Hallucination Rate} measured by atomic FActScore \citep{factscore2023} using Wikipedia as the reference knowledge source; we report the fraction of generated claims unsupported by any retrieved passage.
+
+\textbf{Abstention Precision/Recall} treating non-\textsc{Answer} actions as the positive class; precision measures how often a non-answer action is warranted, and recall measures coverage of warranted non-answers.
+
+\textbf{Conflict Disclosure F1} specifically for examples with gold-labeled conflicting evidence, measuring whether the system correctly identifies and discloses the conflict.
+
+\textbf{Brier Score} \citep{brier1950verification} over the four-class posterior distribution on a held-out calibration set of 266 examples.
+
+\subsection{Evaluation Protocol}
+
+Each dataset is partitioned into a development split (30\%) used to fit the logistic policy layer and tune thresholds, and a test split (70\%) used for all reported metrics. No test data was used during threshold selection. The NoMIRACL nonrelevant subset is used solely for evaluation (no development examples), providing an out-of-distribution robustness test.
+
+\subsection{Implementation Details}
+
+All experiments run on a MacBook Pro M2 with 16 GB RAM (CPU only). Key libraries: \texttt{scikit-learn} 1.4.2 for the policy layer, \texttt{sentence-transformers} 2.7.0 for embedding, \texttt{transformers} 4.40.0 for the QA and NLI models, \texttt{llama-cpp-python} 0.2.56 for the generator, and \texttt{langdetect} 1.0.9 for language identification. The logistic regression uses L2 regularization with $C = 1.0$ (tuned on the development set over $\{0.01, 0.1, 1.0, 10.0\}$). The abstention threshold $\theta$ is swept from 0.1 to 0.9 in steps of 0.05; we report per-threshold metrics in Figure~\ref{fig:tradeoff} and use $\theta^* = 0.55$ as the operating point for main results based on the best F1 on the development set.

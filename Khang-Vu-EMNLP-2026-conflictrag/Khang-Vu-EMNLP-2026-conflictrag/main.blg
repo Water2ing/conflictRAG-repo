@@ -1,0 +1,57 @@
+This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: acl_natbib.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: references.bib
+Warning--I didn't find a database entry for "pubmedqa2019"
+Warning--I didn't find a database entry for "asqa2022"
+Warning--can't use both volume and number fields in brier1950verification
+Warning--can't use both volume and number fields in cohen1960coefficient
+You've used 40 entries,
+            3764 wiz_defined-function locations,
+            921 strings with 13945 characters,
+and the built_in function-call counts, 31688 in all, are:
+= -- 2846
+> -- 1406
+< -- 32
++ -- 588
+- -- 440
+* -- 1867
+:= -- 4511
+add.period$ -- 177
+call.type$ -- 40
+change.case$ -- 436
+chr.to.int$ -- 44
+cite$ -- 42
+duplicate$ -- 2090
+empty$ -- 2289
+format.name$ -- 537
+if$ -- 6999
+int.to.chr$ -- 3
+int.to.str$ -- 17
+missing$ -- 458
+newline$ -- 221
+num.names$ -- 160
+pop$ -- 1199
+preamble$ -- 1
+purify$ -- 301
+quote$ -- 0
+skip$ -- 1671
+stack$ -- 0
+substring$ -- 1171
+swap$ -- 1049
+text.length$ -- 20
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 360
+warning$ -- 2
+while$ -- 174
+width$ -- 0
+write$ -- 537
+(There were 4 warnings)

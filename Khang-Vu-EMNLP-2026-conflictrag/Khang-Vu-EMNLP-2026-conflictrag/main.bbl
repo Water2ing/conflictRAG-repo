@@ -1,0 +1,221 @@
+\begin{thebibliography}{40}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{Anonymous(2024{\natexlab{a}})}]{retrievalrobust2024}
+Anonymous. 2024{\natexlab{a}}.
+\newblock Measuring retrieval robustness in retrieval-augmented generation.
+\newblock In \emph{EMNLP}.
+\newblock Metadata placeholder; verify before submission.
+
+\bibitem[{Anonymous(2024{\natexlab{b}})}]{minicheck2024}
+Anonymous. 2024{\natexlab{b}}.
+\newblock Minicheck: Efficient fact-checking of grounded generation.
+\newblock In \emph{EMNLP}.
+\newblock Metadata placeholder; verify before submission.
+
+\bibitem[{Anonymous(2024{\natexlab{c}})}]{nomiracl2024}
+Anonymous. 2024{\natexlab{c}}.
+\newblock Nomiracl: Knowing when you don't know for robust multilingual retrieval-augmented generation.
+\newblock In \emph{EMNLP}.
+\newblock Metadata placeholder; verify before submission.
+
+\bibitem[{Anonymous(2025)}]{whoqa2025}
+Anonymous. 2025.
+\newblock Whoqa: Question answering with conflicting evidence.
+\newblock In \emph{EMNLP}.
+\newblock Metadata placeholder; verify before submission.
+
+\bibitem[{Asai et~al.(2024)Asai, Wu, Wang, Sil, and Hajishirzi}]{asai2024selfrag}
+Akari Asai, Zeqiu Wu, Yizhong Wang, Avirup Sil, and Hannaneh Hajishirzi. 2024.
+\newblock Self-{RAG}: Learning to retrieve, generate, and critique through self-reflection.
+\newblock In \emph{International Conference on Learning Representations}.
+
+\bibitem[{Bang et~al.(2023)Bang, Cahyawijaya, Lee et~al.}]{bang2023multitask}
+Yejin Bang, Samuel Cahyawijaya, Nayeon Lee, and 1 others. 2023.
+\newblock A multitask, multilingual, multimodal evaluation of {ChatGPT} on reasoning, hallucination, and interactivity.
+\newblock In \emph{Proceedings of the 13th International Joint Conference on Natural Language Processing and the 3rd Conference of the Asia-Pacific Chapter of the Association for Computational Linguistics}, pages 675--718.
+
+\bibitem[{Brier(1950)}]{brier1950verification}
+Glenn~W. Brier. 1950.
+\newblock Verification of forecasts expressed in terms of probability.
+\newblock In \emph{Monthly Weather Review}, volume~78, pages 1--3.
+
+\bibitem[{Chen et~al.(2022)Chen, Wang, and Durrett}]{chen2022rich}
+Hung-Ting Chen, Michael Wang, and Greg Durrett. 2022.
+\newblock Rich knowledge sources bring complex knowledge conflicts: Recalibrating models to reflect conflicting evidence.
+\newblock In \emph{Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing}.
+\newblock Metadata placeholder; verify before submission.
+
+\bibitem[{Chen et~al.(2023)Chen, Shi, Gu et~al.}]{chen2023selftransition}
+Jiefeng Chen, Jinsung Shi, Jiaqi Gu, and 1 others. 2023.
+\newblock Adaptation with self-evaluation to improve selective prediction in {LLMs}.
+\newblock In \emph{Findings of the Association for Computational Linguistics: EMNLP 2023}.
+\newblock Metadata placeholder; verify before submission.
+
+\bibitem[{Cohen(1960)}]{cohen1960coefficient}
+Jacob Cohen. 1960.
+\newblock A coefficient of agreement for nominal scales.
+\newblock In \emph{Educational and Psychological Measurement}, volume~20, pages 37--46.
+
+\bibitem[{Dubey et~al.(2024)Dubey, Jauhri, Pandey et~al.}]{dubey2024llama3}
+Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey, and 1 others. 2024.
+\newblock The {Llama} 3 herd of models.
+\newblock In \emph{arXiv preprint arXiv:2407.21783}.
+
+\bibitem[{Dziri et~al.(2022)Dziri, Rashkin, Linzen, and Reitter}]{dziri2022faithdial}
+Nouha Dziri, Hannah Rashkin, Tal Linzen, and David Reitter. 2022.
+\newblock {FaithDial}: A faithful benchmark for information-seeking dialogue.
+\newblock In \emph{Transactions of the Association for Computational Linguistics}.
+\newblock Metadata placeholder; verify before submission.
+
+\bibitem[{Gao et~al.(2023)Gao, Yen, Yu, and Chen}]{gao2023enabling}
+Tianyu Gao, Howard Yen, Jiatong Yu, and Danqi Chen. 2023.
+\newblock Enabling large language models to generate text with citations.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing}, pages 6465--6488.
+
+\bibitem[{Geifman and El-Yaniv(2017)}]{geifman2017selective}
+Yonatan Geifman and Ran El-Yaniv. 2017.
+\newblock Selective classification for deep neural networks.
+\newblock In \emph{Advances in Neural Information Processing Systems}, pages 4885--4894.
+
+\bibitem[{Guo et~al.(2017)Guo, Pleiss, Sun, and Weinberger}]{guo2017calibration}
+Chuan Guo, Geoff Pleiss, Yu~Sun, and Kilian~Q. Weinberger. 2017.
+\newblock On calibration of modern neural networks.
+\newblock In \emph{Proceedings of the 34th International Conference on Machine Learning}, pages 1321--1330.
+
+\bibitem[{Kadavath et~al.(2022)Kadavath, Conerly, Askell et~al.}]{kadavath2022language}
+Saurav Kadavath, Tom Conerly, Amanda Askell, and 1 others. 2022.
+\newblock Language models (mostly) know what they know.
+\newblock \emph{arXiv preprint arXiv:2207.05221}.
+\newblock Metadata placeholder; verify before submission.
+
+\bibitem[{Karpukhin et~al.(2020)Karpukhin, Oguz, Min et~al.}]{dpr2020}
+Vladimir Karpukhin, Barlas Oguz, Sewon Min, and 1 others. 2020.
+\newblock Dense passage retrieval for open-domain question answering.
+\newblock In \emph{EMNLP}.
+\newblock Verified against ACL Anthology 2020.emnlp-main.550.
+
+\bibitem[{Khattab and Zaharia(2020)}]{colbert2020}
+Omar Khattab and Matei Zaharia. 2020.
+\newblock Colbert: Efficient and effective passage search via contextualized late interaction over bert.
+\newblock In \emph{SIGIR}.
+\newblock Verified against the ColBERT arXiv record.
+
+\bibitem[{Kuhn et~al.(2023)Kuhn, Gal, and Farquhar}]{kuhn2023semantic}
+Lorenz Kuhn, Yarin Gal, and Sebastian Farquhar. 2023.
+\newblock Semantic uncertainty: Linguistic invariances for uncertainty estimation in natural language generation.
+\newblock In \emph{International Conference on Learning Representations}.
+\newblock Metadata placeholder; verify before submission.
+
+\bibitem[{Lewis et~al.(2020)Lewis, Perez, Piktus et~al.}]{lewis2020rag}
+Patrick Lewis, Ethan Perez, Aleksandra Piktus, and 1 others. 2020.
+\newblock Retrieval-augmented generation for knowledge-intensive {NLP} tasks.
+\newblock In \emph{Advances in Neural Information Processing Systems}.
+\newblock Primary RAG paper; same content as rag2020 key.
+
+\bibitem[{Li et~al.(2023)Li, Cheng, Zhao, Nie, and Wen}]{li2023halueval}
+Junyi Li, Xiaoxue Cheng, Wayne~Xin Zhao, Jian-Yun Nie, and Ji-Rong Wen. 2023.
+\newblock {HaluEval}: A large-scale hallucination evaluation benchmark for large language models.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing}, pages 6449--6464.
+
+\bibitem[{Longpre et~al.(2021)Longpre, Perisetla, Chen et~al.}]{longpre2021entity}
+Shayne Longpre, Kartik Perisetla, Anthony Chen, and 1 others. 2021.
+\newblock Entity-based knowledge conflicts in question answering.
+\newblock In \emph{Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing}.
+\newblock Metadata placeholder; verify before submission.
+
+\bibitem[{Mallen et~al.(2023)Mallen, Asai, Zhong, Das, Khashabi, and Hajishirzi}]{mallen2023trust}
+Alex Mallen, Akari Asai, Victor Zhong, Rajarshi Das, Daniel Khashabi, and Hannaneh Hajishirzi. 2023.
+\newblock When not to trust language models: Investigating effectiveness of parametric and non-parametric memories.
+\newblock In \emph{Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics}, pages 9802--9822.
+
+\bibitem[{Maynez et~al.(2020)Maynez, Narayan, Bohnet, and McDonald}]{maynez2020faithfulness}
+Joshua Maynez, Shashi Narayan, Bernd Bohnet, and Ryan McDonald. 2020.
+\newblock On faithfulness and factuality in abstractive summarization.
+\newblock In \emph{Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics}, pages 1906--1919.
+
+\bibitem[{Min et~al.(2023)Min, Krishna, Lyu et~al.}]{factscore2023}
+Sewon Min, Kalpesh Krishna, Xinxi Lyu, and 1 others. 2023.
+\newblock {FActScore}: Fine-grained atomic evaluation of factual precision in long-form text generation.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing}.
+\newblock Verified against ACL Anthology 2023.emnlp-main.741.
+
+\bibitem[{Nakano et~al.(2021)Nakano, Hilton, Balwit et~al.}]{nakano2021webgpt}
+Reiichiro Nakano, Jacob Hilton, Abigail Balwit, and 1 others. 2021.
+\newblock {WebGPT}: Browser-assisted question-answering with human feedback.
+\newblock In \emph{arXiv preprint arXiv:2112.09332}.
+
+\bibitem[{Peng et~al.(2023)Peng, Galley, He et~al.}]{peng2023check}
+Baolin Peng, Michel Galley, Pengcheng He, and 1 others. 2023.
+\newblock Check your facts and try again: Improving large language models with external knowledge and automated feedback.
+\newblock In \emph{arXiv preprint arXiv:2302.12813}.
+
+\bibitem[{Petroni et~al.(2019)Petroni, Rockt\"{a}schel, Riedel et~al.}]{petroni2019language}
+Fabio Petroni, Tim Rockt\"{a}schel, Sebastian Riedel, and 1 others. 2019.
+\newblock Language models as knowledge bases?
+\newblock In \emph{Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing}, pages 2463--2473.
+
+\bibitem[{Rajpurkar et~al.(2016)Rajpurkar, Zhang, Lopyrev, and Liang}]{rajpurkar2016squad}
+Pranav Rajpurkar, Jian Zhang, Konstantin Lopyrev, and Percy Liang. 2016.
+\newblock {SQuAD}: 100{,}000+ questions for machine comprehension of text.
+\newblock In \emph{Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing}, pages 2383--2392.
+
+\bibitem[{Reimers and Gurevych(2019)}]{reimers2019sentence}
+Nils Reimers and Iryna Gurevych. 2019.
+\newblock Sentence-{BERT}: Sentence embeddings using {Siamese} {BERT}-networks.
+\newblock In \emph{Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing}.
+\newblock Verified against ACL Anthology 2019.emnlp-main.726.
+
+\bibitem[{Shi et~al.(2023)Shi, Chen, Misra, Scales, Dohan, Chi, Sch\"{a}rli, and Zhou}]{shi2023large}
+Freda Shi, Xinyun Chen, Kanishka Misra, Nathan Scales, David Dohan, Ed~Chi, Nathanael Sch\"{a}rli, and Denny Zhou. 2023.
+\newblock Large language models easily distracted by irrelevant context.
+\newblock In \emph{Proceedings of the 40th International Conference on Machine Learning}, pages 31210--31227.
+
+\bibitem[{Thorne et~al.(2018)Thorne, Vlachos, Christodoulopoulos, and Mittal}]{thorne2018fever}
+James Thorne, Andreas Vlachos, Christos Christodoulopoulos, and Arpit Mittal. 2018.
+\newblock {FEVER}: A large-scale dataset for fact extraction and {VERification}.
+\newblock In \emph{Proceedings of the 2018 Conference of the North American Chapter of the Association for Computational Linguistics}, pages 809--819.
+
+\bibitem[{Trivedi et~al.(2023)Trivedi, Balasubramanian, Khot, and Sabharwal}]{trivedi2023interleaving}
+Harsh Trivedi, Niranjan Balasubramanian, Tushar Khot, and Ashish Sabharwal. 2023.
+\newblock Interleaving retrieval with chain-of-thought reasoning for knowledge-intensive multi-step questions.
+\newblock In \emph{Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics}, pages 10014--10037.
+
+\bibitem[{Varshney et~al.(2022)Varshney, Mishra, and Baral}]{varshney2022investigating}
+Neeraj Varshney, Swaroop Mishra, and Chitta Baral. 2022.
+\newblock Investigating selective prediction approaches across several tasks in {IID}, {OOD}, and adversarial settings.
+\newblock In \emph{Findings of the Association for Computational Linguistics: ACL-IJCNLP 2022}, pages 1537--1553.
+
+\bibitem[{Xie et~al.(2024)Xie, Zhang, Chen et~al.}]{xie2023adaptive}
+Jian Xie, Kai Zhang, Jiangjie Chen, and 1 others. 2024.
+\newblock Adaptive chameleon or stubborn sloth: Revealing the behavior of large language models in knowledge conflicts.
+\newblock In \emph{International Conference on Learning Representations}.
+\newblock Metadata placeholder; verify before submission.
+
+\bibitem[{Xie et~al.(2023)Xie, Sun et~al.}]{conflictqa2023}
+Yike Xie, Jian-Guang Sun, and 1 others. 2023.
+\newblock Resolving knowledge conflicts in large language models.
+\newblock In \emph{arXiv preprint}.
+\newblock ConflictQA dataset; metadata placeholder; verify before submission.
+
+\bibitem[{Yang et~al.(2018)Yang, Qi, Zhang et~al.}]{yang2018hotpotqa}
+Zhilin Yang, Peng Qi, Saizheng Zhang, and 1 others. 2018.
+\newblock {HotpotQA}: A dataset for diverse, explainable multi-hop question answering.
+\newblock In \emph{Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing}, pages 2369--2380.
+
+\bibitem[{Zhang et~al.(2023)Zhang, Li, Cui et~al.}]{zhang2023siren}
+Yue Zhang, Yafu Li, Leyang Cui, and 1 others. 2023.
+\newblock Siren's song in the {AI} ocean: A survey on hallucination in large language models.
+\newblock In \emph{arXiv preprint arXiv:2309.01219}.
+
+\bibitem[{Zhao et~al.(2024)Zhao, Ni, Liu et~al.}]{zhao2024knowcot}
+Yukun Zhao, Lingyong Ni, Yixin Liu, and 1 others. 2024.
+\newblock Knowing what {LLMs} do not know: A simple yet effective self-detection method.
+\newblock In \emph{Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics}, pages 4051--4062.
+
+\bibitem[{Zhao et~al.(2021)Zhao, Wallace, Feng, Klein, and Singh}]{zhao2021calibrate}
+Zihao Zhao, Eric Wallace, Shi Feng, Dan Klein, and Sameer Singh. 2021.
+\newblock Calibrate before use: Improving few-shot performance of language models.
+\newblock In \emph{Proceedings of the 38th International Conference on Machine Learning}, pages 12697--12706.
+
+\end{thebibliography}

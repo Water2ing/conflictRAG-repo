@@ -1,0 +1,17 @@
+\section{Protocol Assumptions and Proof Sketches}
+This appendix adds reviewer-checkable formal scaffolding for \method{}. The statements are protocol-level guarantees, not empirical claims, and do not depend on the \syntheticlabel{} numbers.
+
+\paragraph{Assumption 1: fixed replay trace.} For every example $i$ and system $s$, the evaluation stores a deterministic replay tuple $(x_i, y_{is}, z_{is}, c_{is})$ containing input, output, decision trace, and cost. Metrics are computed only from replay tuples.
+
+\paragraph{Proposition 1: ledger completeness.} If every aggregate claim in the manuscript names a table or figure identifier and every table or figure row names a replay tuple set, then every aggregate claim is auditable to example-level evidence.
+
+\paragraph{Proof sketch.} The claim ledger is a finite map from claim identifiers to table or figure cells. Each cell is computed from a finite replay tuple set by the metric script. Composing these maps gives a trace from each claim to the exact tuple set used to compute it. The guarantee fails only if a claim is omitted from the ledger or a table/figure cell is manually edited outside the script.
+
+\paragraph{Proposition 2: selective escalation cost bound.} For any cascade-style variant, if cheap evaluation costs $c_l$, expensive evaluation costs $c_h$, and a fraction $q$ of examples is escalated, the per-example expected evaluation cost is $c_l + q c_h$ under fixed replay.
+
+\paragraph{Proof sketch.} Each example always pays the cheap-stage cost and pays the expensive-stage cost exactly when the escalation indicator is one. Averaging the sum $c_l + I_i c_h$ over examples gives $c_l + q c_h$, where $q$ is the empirical mean of $I_i$.
+
+\paragraph{Reviewer checklist.} The final paper must verify that metric scripts, replay tuple schemas, claim-ledger rows, and appendix assumptions agree before any proof sketch is described as supporting a real result.
+
+\paragraph{ConflictRAG-specific obligation.}
+Let actions be ordered by risk: forced answer, disclaimer, conflict disclosure, and abstention. A threshold policy is auditable if every example stores a scalar uncertainty score and a chosen threshold before outcome scoring. Under fixed utilities for correct answer, unsupported answer, correct disclosure, and unnecessary abstention, expected utility is the empirical mean of the per-action utility table. This does not assert which utility weights are correct; it makes the tradeoff explicit and reproducible.
