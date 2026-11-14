@@ -1,0 +1,146 @@
+tau_s=0.3 tfidf=0.2 C=1.0 locked theta=0.4 device=cpu
+Loading embedding, QA, and NLI models...
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\huggingface_hub\file_download.py:143: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in C:\Users\ASUS\.cache\huggingface\hub\models--sentence-transformers--all-MiniLM-L6-v2. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+To support symlinks on Windows, you either need to activate Developer Mode or to run Python as an administrator. In order to activate developer mode, see this article: https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development
+  warnings.warn(message)
+Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\transformers\tokenization_utils_base.py:1601: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be depracted in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\huggingface_hub\file_download.py:143: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in C:\Users\ASUS\.cache\huggingface\hub\models--cross-encoder--nli-MiniLM2-L6-H768. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+To support symlinks on Windows, you either need to activate Developer Mode or to run Python as an administrator. In order to activate developer mode, see this article: https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development
+  warnings.warn(message)
+Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\huggingface_hub\file_download.py:143: UserWarning: `huggingface_hub` cache-system uses symlinks by default to efficiently store duplicated files but your machine does not support them in C:\Users\ASUS\.cache\huggingface\hub\models--deepset--minilm-uncased-squad2. Caching files will still work but in a degraded version that might require more space on your disk. This warning can be disabled by setting the `HF_HUB_DISABLE_SYMLINKS_WARNING` environment variable. For more details, see https://huggingface.co/docs/huggingface_hub/how-to-cache#limitations.
+To support symlinks on Windows, you either need to activate Developer Mode or to run Python as an administrator. In order to activate developer mode, see this article: https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development
+  warnings.warn(message)
+Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+Some weights of the model checkpoint at deepset/minilm-uncased-squad2 were not used when initializing BertForQuestionAnswering: ['bert.pooler.dense.bias', 'bert.pooler.dense.weight']
+- This IS expected if you are initializing BertForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+  Extracted 250/1000 from dev_set_natural.jsonl
+  Extracted 500/1000 from dev_set_natural.jsonl
+  Extracted 750/1000 from dev_set_natural.jsonl
+  Extracted 1000/1000 from dev_set_natural.jsonl
+Raw features cached to D:\conflictrag-theta\repo\data\cache\raw_dev_set_natural.json
+Loading embedding, QA, and NLI models...
+Some weights of the model checkpoint at deepset/minilm-uncased-squad2 were not used when initializing BertForQuestionAnswering: ['bert.pooler.dense.bias', 'bert.pooler.dense.weight']
+- This IS expected if you are initializing BertForQuestionAnswering from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForQuestionAnswering from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+  Extracted 250/3073 from test_set_1.jsonl
+  Extracted 500/3073 from test_set_1.jsonl
+  Extracted 750/3073 from test_set_1.jsonl
+  Extracted 1000/3073 from test_set_1.jsonl
+  Extracted 1250/3073 from test_set_1.jsonl
+  Extracted 1500/3073 from test_set_1.jsonl
+  Extracted 1750/3073 from test_set_1.jsonl
+  Extracted 2000/3073 from test_set_1.jsonl
+  Extracted 2250/3073 from test_set_1.jsonl
+  Extracted 2500/3073 from test_set_1.jsonl
+  Extracted 2750/3073 from test_set_1.jsonl
+  Extracted 3000/3073 from test_set_1.jsonl
+Raw features cached to D:\conflictrag-theta\repo\data\cache\raw_test_set_1.json
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+C:\Users\ASUS\anaconda3\envs\conflictrag-theta\Lib\site-packages\sklearn\linear_model\_logistic.py:1256: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
+  warnings.warn(
+
+Variant                            theta*  dev@0.40 dev@theta* test@0.40 test@theta*     diff            95% CI      p  check
+Full 4D Model (locked theta)         0.45    0.6660     0.6672    0.6001      0.6015  +0.0014   [+0.000,+0.003]  0.010  MISMATCH (ablation 0.6007947075711618)
+Full 4D Model (theta re-tuned)       0.45    0.6660     0.6672    0.6001      0.6015  +0.0014   [+0.000,+0.003]  0.006  MISMATCH (ablation 0.6007947075711618)
+w/o Dispersion                       0.25    0.3670     0.4593    0.3770      0.4500  +0.0730   [+0.057,+0.089]  0.000  MISMATCH (ablation 0.45241153405578205)
+w/o NLI Contradiction                0.40    0.6416     0.6416    0.5681      0.5681  +0.0000   [+0.000,+0.000]  1.000  MISMATCH (ablation 0.5742339196495545)
+w/o Claim Support                    0.45    0.6104     0.6363    0.5707      0.5697  -0.0011   [-0.011,+0.008]  0.824  MISMATCH (ablation 0.5689972144503346)
+w/o Mismatch                         0.40    0.6209     0.6209    0.5803      0.5803  +0.0000   [+0.000,+0.000]  1.000  OK
+k + len only (shortcut control)      0.35    0.5698     0.5763    0.6004      0.6046  +0.0043   [-0.004,+0.012]  0.302  OK
+
+Test macro F1 by theta (diagnostic only, theta is selected on dev):
+Variant                             0.20  0.25  0.30  0.35  0.40  0.45  0.50  0.55  0.60  0.65  0.70  0.75  0.80  0.85  0.90
+Full 4D Model (locked theta)       0.572 0.578 0.583 0.586 0.600 0.601 0.502 0.438 0.438 0.438 0.438 0.438 0.438 0.438 0.438
+Full 4D Model (theta re-tuned)     0.572 0.578 0.583 0.586 0.600 0.601 0.502 0.438 0.438 0.438 0.438 0.438 0.438 0.438 0.438
+w/o Dispersion                     0.360 0.450 0.461 0.377 0.377 0.377 0.377 0.377 0.377 0.377 0.377 0.377 0.377 0.377 0.377
+w/o NLI Contradiction              0.544 0.549 0.553 0.555 0.568 0.559 0.470 0.406 0.406 0.406 0.406 0.406 0.406 0.406 0.406
+w/o Claim Support                  0.559 0.563 0.567 0.570 0.571 0.570 0.418 0.418 0.418 0.418 0.418 0.418 0.418 0.418 0.418
+w/o Mismatch                       0.561 0.566 0.573 0.577 0.580 0.581 0.428 0.428 0.428 0.428 0.428 0.428 0.428 0.428 0.428
+k + len only (shortcut control)    0.584 0.573 0.590 0.605 0.600 0.578 0.522 0.449 0.449 0.449 0.449 0.449 0.449 0.449 0.449
+
+Saved to D:\conflictrag-theta\repo\results\test_set_1_4D_theta_analysis.json
