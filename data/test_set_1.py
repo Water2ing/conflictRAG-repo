@@ -12,7 +12,7 @@ DATA_DIR = os.path.join(ROOT_DIR, "data")
 OUTPUT_PATH = os.path.join(DATA_DIR, "test_set_1.jsonl")
 
 def generate_test_set_1():
-    print("Generating test_set_1 (Strictly Disjoint from dev_set_1)...")
+    print("Generating test_set_1 (disjoint from dev_set_natural by source split / index range)...")
     all_examples = []
     random.seed(42)
     ans_total = 0  # Global cap for ANSWER class

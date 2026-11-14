@@ -1,0 +1,195 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usetheme[progressbar=frametitle, numbering=fraction, sectionpage=progressbar]{metropolis}
+\definecolor{accent}{HTML}{2E5C8A}
+\setbeamercolor{progress bar}{fg=accent}
+\setbeamercolor{frametitle}{bg=accent, fg=white}
+\setbeamercolor{alerted text}{fg=accent}
+\setbeamertemplate{navigation symbols}{}
+\addtobeamertemplate{title page}{}{\vspace*{-1.2cm}}
+\title[Progress Report]{ConflictRAG Progress Report}
+\subtitle{Current Status and Next Steps}
+\author{}
+\institute[HCMUT]{Computer Engineering \\ Ho Chi Minh City University of Technology (HCMUT)}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% ============================================================
+\section{Where We Are}
+% ============================================================
+
+\begin{frame}{Goal and Scope}
+  \begin{itemize}
+    \item \textbf{Goal:} given the passages a RAG system retrieves, decide how it should respond:
+      \begin{itemize}
+        \item \textbf{Answer} \quad the evidence is sufficient and consistent
+        \item \textbf{Disclaimer} \quad the evidence is partial or uncertain
+        \item \textbf{Disclose} \quad the sources contradict each other
+        \item \textbf{Abstain} \quad the evidence is irrelevant
+      \end{itemize}
+    \vspace{0.2cm}
+    \item \textbf{Approach:} four signals computed from the passages (how much they disagree,
+      whether they contradict, whether they support an answer, whether they match the question),
+      combined by a small classifier.
+    \vspace{0.2cm}
+    \item \textbf{Scope:} the routing decision only. Writing the final answer (Llama 3.1) is
+      deliberately left out, since its quality depends on the LLM rather than on our method.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Work Completed}
+  \begin{itemize}
+    \item \textbf{End-to-end pipeline} built and run: tuning on a development set, then a single
+      evaluation on a held-out test set of 3{,}073 examples drawn from six public datasets.
+    \vspace{0.15cm}
+    \item \textbf{Two bugs found and fixed.} Both had affected every earlier result, so all
+      settings were re-tuned and all models retrained afterwards.
+    \vspace{0.15cm}
+    \item \textbf{A shortcut detected and partly addressed.} Two inputs, the number of passages
+      and the question length, were predicting the answer on their own. We removed them, at a
+      cost of about 0.04 in score, but the shortcut persists through the data itself
+      (next section).
+    \vspace{0.15cm}
+    \item \textbf{Careful evaluation:} the test set is never used for tuning, and every
+      reported difference is checked for statistical significance.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Headline Results (test set, 3{,}073 examples)}
+  \begin{center}
+    \begin{tabular}{lc}
+      \toprule
+      System & Score (macro-F1) \\
+      \midrule
+      \textbf{Our method} & \textbf{0.60} \\
+      LLM asked directly (Llama 3.1 8B) & 0.19 \\
+      CRAG-style relevance filter & 0.18 \\
+      \midrule
+      \alert{Simple rule: count the passages} & \alert{0.67} \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \vspace{0.2cm}
+  \begin{itemize}
+    \item We clearly beat both existing approaches, but they are weak: neither ever detects a
+      conflict.
+    \item A trivial rule that only counts the retrieved passages \alert{beats our method}.
+      This is the central problem (next section).
+    \item Of the four actions, Disclaimer is almost never predicted correctly.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{What Each Signal Contributes}
+  \begin{itemize}
+    \item Removing any of the four signals lowers the score, and every drop is statistically
+      significant. From most to least important:
+      \begin{enumerate}
+        \item disagreement between passages \quad (largest drop by far)
+        \item support for an answer
+        \item contradiction between passages
+        \item mismatch with the question
+      \end{enumerate}
+    \vspace{0.2cm}
+    \item \textbf{Caveat:} part of these drops reflects the shortcut rather than genuine
+      conflict detection. Two signals are always zero when only one passage is retrieved, so
+      they partly encode the passage count.
+    \vspace{0.2cm}
+    \item On the two datasets never seen during tuning, accuracy falls from 0.78 to 0.57.
+  \end{itemize}
+\end{frame}
+
+% ============================================================
+\section{The Main Problem}
+% ============================================================
+
+\begin{frame}{The Test Data Gives Away the Answer}
+  \small
+  \begin{center}
+    \begin{tabular}{lcl}
+      \toprule
+      Dataset & Passages & Correct action \\
+      \midrule
+      ConflictQA & 2 & always Disclose \\
+      RGB / NoMIRACL & 2 / 3 & always Abstain \\
+      FaithDial, PubMedQA & 1 & mostly Answer \\
+      WhoQA & 2 & mixed \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \begin{itemize}
+    \item Each dataset contributes essentially one action and one passage count, so the
+      passage count alone predicts the action, and our scores partly reflect which dataset an
+      example came from.
+    \item \textbf{Disclaimer} labels come from the reference answer, not the evidence, so no
+      evidence-based method can learn them.
+    \item The contradiction signal is unreliable. \alert{Benchmark and method both need work.}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Assessment}
+  \begin{itemize}
+    \item \textbf{Not yet publishable.} Any reviewer will compare against the passage-count
+      rule, and we currently lose to it.
+    \vspace{0.15cm}
+    \item \textbf{Encouraging signs.} Within a single dataset, where the shortcut cannot help,
+      two of the signals (disagreement and answer support) do separate the actions well. The
+      direction is worth pursuing.
+    \vspace{0.15cm}
+    \item \textbf{Stronger comparisons needed.} The current baselines never detect conflicts,
+      so a few-shot LLM baseline is required for a fair comparison.
+    \vspace{0.15cm}
+    \item \textbf{Name collision.} A May 2026 preprint already uses the name
+      ``ConflictRAG'' (Wang et al., arXiv:2605.17301). It resolves conflicts and writes a
+      reconciled answer, whereas we decide whether to answer, disclose, or abstain. We should
+      rename our method and cite their work.
+  \end{itemize}
+\end{frame}
+
+% ============================================================
+\section{Next Steps}
+% ============================================================
+
+\begin{frame}{Plan}
+  \begin{enumerate}
+    \item \textbf{Quick feasibility check (days).} Confirm the signals separate the actions
+      within single datasets, where the passage count is fixed. If they do not, we change
+      direction before investing further.
+    \vspace{0.15cm}
+    \item \textbf{Rebuild the test data.} Same number of passages for every example; each
+      dataset contributing several actions; a fresh test set kept untouched until the end.
+    \vspace{0.15cm}
+    \item \textbf{Fix the action set.} Redefine Disclaimer from the evidence, or drop it and
+      keep three actions.
+    \vspace{0.15cm}
+    \item \textbf{Improve the method.} Replace the contradiction signal with a comparison of
+      the answers each passage supports.
+    \vspace{0.15cm}
+    \item \textbf{Stronger evaluation.} Add a few-shot LLM baseline, test on datasets held out
+      entirely, and measure speed.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Decisions Needed}
+  \begin{enumerate}
+    \item \textbf{Rebuild the benchmark before further experiments?}
+      Recommended: yes. Every current comparison is affected by the shortcut.
+    \vspace{0.2cm}
+    \item \textbf{Disclaimer: redefine or drop?}
+    \vspace{0.2cm}
+    \item \textbf{Venue and timeline.} Given the rebuild, a workshop paper may be more
+      realistic than a main-conference submission in the next cycle.
+    \vspace{0.2cm}
+    \item \textbf{New name} for the method.
+  \end{enumerate}
+  \vspace{0.3cm}
+  \begin{beamercolorbox}[sep=0.4em]{alerted text}
+    \small Bottom line: the pipeline and evaluation are in place and have exposed the real
+    problem. Fixing the benchmark and the contradiction signal comes before any paper.
+  \end{beamercolorbox}
+\end{frame}
+
+\end{document}

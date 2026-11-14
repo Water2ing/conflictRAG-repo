@@ -1,13 +1,19 @@
+# Versions used for the 4D server run (31 Oct 2026); full list in logs/pip_freeze_20261031.txt.
+# scikit-learn must stay < 1.8: the policy uses LogisticRegression(multi_class="ovr").
 scikit-learn==1.5.1
-sentence-transformers==2.7.0
+numpy==1.26.4
+torch==2.4.1
 transformers==4.44.2
-protobuf==3.20.3
-torch
-requests
-matplotlib
-nltk
-sentencepiece
-langdetect
+sentence-transformers==3.0.1
+tokenizers==0.19.1
+huggingface_hub==0.36.2
+langdetect==1.0.9
+nltk==3.10.4
+requests==2.34.2
+tqdm==4.70.1
+matplotlib==3.11.2
+joblib==1.6.0
+# Only for regenerating the datasets (data/*.py) and the CRAG baseline
 datasets
-huggingface-hub
-tqdm
+sentencepiece
+protobuf==3.20.3

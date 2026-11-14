@@ -1,0 +1,255 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[font=small,labelfont=bf,skip=3pt]{caption}
+\usepackage{microtype}
+
+\setlist{nosep,leftmargin=1.3em}
+\titlespacing*{\section}{0pt}{7pt}{3pt}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{0.6em}{}
+\setlength{\parskip}{3pt}
+\setlength{\parindent}{0pt}
+\setlength{\textfloatsep}{8pt}
+\setlength{\floatsep}{6pt}
+\setlength{\tabcolsep}{4.5pt}
+\newcommand{\code}[1]{\texttt{\small #1}}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries 4D Run Report}\\[3pt]
+{\normalsize Response-policy layer with four retrieval features: run tag \code{test\_set\_1\_4D}}\\[2pt]
+{\small Server run: 31 October 2026 \quad$\cdot$\quad Report: 12 November 2026}
+\end{center}
+
+\section{Summary}
+
+The 4D run tested whether the policy still works once passage count $k$ and query length are
+removed from its inputs. It does not yet support the paper's central claim.
+
+\begin{itemize}
+\item \textbf{The 4D policy is no better than counting passages.} It reaches 0.602 macro-F1 on
+  the test set. A fixed rule that uses only $k$ ($1\!\to$\,ANSWER, $2\!\to$\,DISCLOSE,
+  $3\!\to$\,ABSTAIN) reaches 0.665, and a logistic regression on $k$ and query length reaches 0.605.
+\item \textbf{The ablation looks clean but is misleading.} Removing any feature lowers macro-F1
+  significantly, yet three of the four features act as indicators of passage count or source
+  dataset, not as the signals the paper describes.
+\item \textbf{DISCLAIMER is not learnable} from these features (F1 0.105), and performance drops
+  sharply on the two sources absent from dev (accuracy 0.572 vs.\ 0.778).
+\item \textbf{The baselines are too weak to carry the comparison.} Neither ever predicts DISCLOSE,
+  and both have lower accuracy than always answering.
+\item \textbf{Generation was deliberately not run.} The study evaluates the routing decision;
+  Llama 3.1 was not connected, so only routing decisions are reported.
+\end{itemize}
+
+The root cause is the benchmark: source and passage count nearly determine the label. Removing
+$k$ from the inputs did not remove the shortcut, because dispersion and NLI contradiction are
+exactly zero whenever $k=1$.
+
+\section{Setup}
+
+\textbf{Policy.} One-vs-rest logistic regression on
+[dispersion, NLI contradiction, claim support, mismatch], with a gate $\theta$ on $P(\mathrm{ANSWER})$.
+Trained on \code{dev\_set\_natural.jsonl} (1{,}000 examples); evaluated once on
+\code{test\_set\_1.jsonl} (3{,}073 examples).
+
+\textbf{Hyperparameters.} A joint grid search with 5-fold stratified CV on dev covered 18{,}480
+configurations. The best was $\tau_s{=}0.3$, TF-IDF${=}0.20$, $C{=}1.0$, $\theta{=}0.40$, with mean
+fold macro-F1 0.686 $\pm$ 0.029. TF-IDF sat on the grid edge, so the range was extended to
+0.18--0.50 (15{,}120 configurations); the optimum did not move. Only 21 of the 18{,}480
+configurations are within 0.01 of the best.
+
+\textbf{Evaluation.} Each ablation variant retrains on dev and re-tunes $\theta$ on out-of-fold dev
+predictions. Differences use a paired bootstrap on the test set ($B{=}1000$).
+Environment: scikit-learn 1.5.1, transformers 4.44.2, sentence-transformers 3.0.1, torch 2.4.1.
+
+\section{Results}
+
+\begin{table}[h]
+\centering\small
+\caption{Test results ($n{=}3{,}073$). Per-class columns are F1. $^\dagger$The two 6D result files in
+the project disagree (0.642 and 0.633); see Section~5.}
+\begin{tabular}{lcccccc}
+\toprule
+System & Macro-F1 & Accuracy & ABSTAIN & ANSWER & DISCLAIMER & DISCLOSE \\
+\midrule
+4D policy (\code{main.py}) & 0.602 & 0.735 & 0.673 & 0.828 & 0.105 & 0.800 \\
+6D policy (earlier run)$^\dagger$ & 0.642 & 0.725 & 0.763 & 0.784 & 0.176 & 0.845 \\
+\midrule
+$k$-only rule (no learning) & \textbf{0.665} & \textbf{0.847} & 0.872 & 0.892 & 0.000 & 0.896 \\
+$k$ + query length (logistic regression) & 0.605 & 0.670 & 0.767 & 0.712 & 0.203 & 0.736 \\
+Always ANSWER & 0.171 & 0.521 & 0.000 & 0.685 & 0.000 & 0.000 \\
+\midrule
+Vanilla LLM router (Llama 3.1 8B) & 0.195 & 0.304 & 0.110 & 0.457 & 0.211 & 0.000 \\
+Static-CRAG (T5 evaluator) & 0.180 & 0.403 & 0.066 & 0.578 & 0.075 & 0.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Against the shortcut.} The 4D policy trails the $k$-only rule by 0.064 macro-F1
+(95\% CI $-0.081$ to $-0.047$) and is indistinguishable from $k$ + query length
+($+0.004$, $p{=}0.74$). If DISCLAIMER is merged into ANSWER, the gap widens: 0.816 for the policy
+against 0.916 for the rule.
+
+\textbf{Against the baselines.} The policy leads the Vanilla router by 0.407 and Static-CRAG by
+0.422 (both CIs exclude zero). This margin is not meaningful evidence. Static-CRAG cannot output
+DISCLOSE by design, the Vanilla router never chose it, and both score 0.000 accuracy on ConflictQA.
+
+\textbf{4D vs.\ 6D.} Dropping $k$ and query length costs 0.041 macro-F1
+(95\% CI $-0.056$ to $-0.025$) but raises accuracy by one point. The two models agree on 84\% of
+examples.
+
+\begin{table}[h]
+\centering\small
+\caption{Ablation on the test set. $\Delta$ is against the full 4D model with re-tuned $\theta$.}
+\begin{tabular}{lccccccccc}
+\toprule
+Variant & $\theta$ & Macro-F1 & $\Delta$F1 & 95\% CI & Acc. & ABST. & ANS. & DISCLM. & DISCLO. \\
+\midrule
+Full 4D model & 0.40 & 0.601 & -- & -- & 0.735 & 0.674 & 0.827 & 0.101 & 0.801 \\
+w/o Dispersion & 0.25 & 0.452 & $-0.148$ & [$-0.163$, $-0.135$] & 0.561 & 0.700 & 0.674 & 0.099 & 0.336 \\
+w/o Claim support & 0.45 & 0.569 & $-0.032$ & [$-0.045$, $-0.020$] & 0.657 & 0.623 & 0.755 & 0.131 & 0.767 \\
+w/o NLI contradiction & 0.40 & 0.574 & $-0.027$ & [$-0.042$, $-0.012$] & 0.724 & 0.581 & 0.827 & 0.101 & 0.789 \\
+w/o Mismatch & 0.40 & 0.581 & $-0.020$ & [$-0.032$, $-0.008$] & 0.783 & 0.645 & 0.890 & 0.000 & 0.788 \\
+w/o $\theta$ gate (argmax) & -- & 0.587 & $-0.013$ & [$-0.025$, $-0.004$] & 0.787 & 0.673 & 0.885 & 0.000 & 0.792 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Every component is statistically significant, and the ordering matches the draft's narrative
+(dispersion first). Section~4 explains why this should not be read as support for that narrative.
+Note also that removing mismatch or the $\theta$ gate \emph{raises} accuracy by five points:
+their whole macro-F1 contribution is moving DISCLAIMER F1 from 0.000 to 0.101, paid for with
+ANSWER F1 falling from 0.89 to 0.83.
+
+\begin{table}[h]
+\centering\small
+\caption{Test accuracy by source. WhoQA and NoMIRACL do not appear in dev.}
+\begin{tabular}{llcccccc}
+\toprule
+Source ($n$) & Gold labels & $k$ & 4D & 6D & $k$-rule & Vanilla & CRAG \\
+\midrule
+ConflictQA (500) & DISCLOSE & 2 & 0.932 & 0.960 & 1.000 & 0.000 & 0.000 \\
+FaithDial (1{,}272) & ANSWER 1{,}030 / DISCLAIMER 242 & 1 & 0.780 & 0.696 & 0.810 & 0.330 & 0.504 \\
+PubMedQA (559) & ANSWER 500 / DISCLAIMER 59 & 1 & 0.660 & 0.649 & 0.894 & 0.750 & 0.891 \\
+RGB (100) & ABSTAIN & 2 & 0.640 & 0.790 & 0.000 & 0.010 & 0.000 \\
+\midrule
+NoMIRACL (342) & ABSTAIN & 3 & 0.746 & 0.904 & 1.000 & 0.094 & 0.085 \\
+WhoQA (300) & DISCLOSE 230 / ANSWER 70 & 2 & 0.373 & 0.370 & 0.767 & 0.203 & 0.233 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Seen vs.\ unseen sources.} Accuracy is 0.778 on the four sources present in dev and 0.572
+on WhoQA + NoMIRACL. On WhoQA the policy gets 0 of 70 ANSWER cases right and sends 170 of 300
+examples to ABSTAIN. This explains most of the gap between dev (0.687 out-of-fold) and test (0.602).
+
+\section{Diagnosis: what the features actually measure}
+
+\begin{table}[h]
+\centering\small
+\caption{Mean feature value per source and gold label (test set).}
+\begin{tabular}{llccccc}
+\toprule
+Source & Gold label & $k$ & Dispersion & NLI contr. & Claim support & Mismatch \\
+\midrule
+ConflictQA & DISCLOSE & 2 & 0.410 & 0.013 & 0.605 & 0.598 \\
+WhoQA & DISCLOSE & 2 & 0.573 & 0.390 & 0.374 & 0.996 \\
+WhoQA & ANSWER & 2 & 0.315 & 0.417 & 0.493 & 0.971 \\
+RGB & ABSTAIN & 2 & 0.354 & 0.215 & 0.310 & 0.280 \\
+NoMIRACL & ABSTAIN & 3 & 0.550 & 0.424 & 0.133 & 0.333 \\
+FaithDial & ANSWER / DISCLAIMER & 1 & 0.000 & 0.000 & 0.178 / 0.219 & 0.930 / 0.955 \\
+PubMedQA & ANSWER / DISCLAIMER & 1 & 0.000 & 0.000 & 0.568 / 0.542 & 0.328 / 0.288 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+\item \textbf{Dispersion is a passage-count flag.} It is exactly 0 for all 1{,}831 single-passage
+  examples and never 0 otherwise. That is why removing it costs 0.148. Among multi-passage
+  examples it does not separate DISCLOSE from the rest (AUROC 0.48). It does carry real signal
+  within WhoQA (AUROC 0.89 for DISCLOSE vs.\ ANSWER), which the trained policy fails to use.
+\item \textbf{NLI contradiction points the wrong way.} It is lowest on ConflictQA, where every
+  example is a conflict (mean 0.013), and high on irrelevant-passage sets. For DISCLOSE vs.\ the
+  rest among multi-passage examples its AUROC is 0.18. The policy uses it as an ABSTAIN cue:
+  removing it lowers NoMIRACL accuracy from 0.746 to 0.462, leaves DISCLOSE F1 almost unchanged,
+  and \emph{raises} WhoQA accuracy from 0.373 to 0.767.
+\item \textbf{Mismatch is a source flag.} It fires on 93--96\% of FaithDial and 97--100\% of WhoQA,
+  but on only about 30\% of the truly irrelevant NoMIRACL and RGB examples.
+\item \textbf{Claim support behaves as intended.} Low support goes with ABSTAIN (AUROC about 0.78).
+\item \textbf{DISCLAIMER cannot be separated.} All 301 DISCLAIMER cases have $k{=}1$, where the
+  feature vector takes only four distinct values. The DISCLAIMER rate in those four cells is
+  11--19\%, against 16\% overall. The policy assigns DISCLAIMER to one cell of 225 examples, of
+  which 28 are correct (12\%), which is below the base rate.
+\item \textbf{DISCLAIMER labels describe the response, not the evidence.} They come from the
+  ``Generic'' and ``Uncooperative'' response tags in FaithDial and the ``maybe'' decision in
+  PubMedQA. No retrieval-side feature can be expected to recover them.
+\end{itemize}
+
+\section{Reliability and reproducibility issues}
+
+\begin{itemize}
+\item \textbf{Generation out of scope by design.} Llama 3.1 was intentionally not connected, so
+  2{,}567 outputs carry the \code{GENERATION\_ERROR} placeholder and 506 the fixed ABSTAIN string.
+  The routing decisions are unaffected. Answer quality and hallucination rate are not measured,
+  so the paper should not claim them.
+\item \textbf{$\theta$ is fragile.} On dev, mean fold macro-F1 is 0.686 at $\theta{=}0.40$,
+  0.676 at 0.45, 0.548 at 0.50, and 0.478 from 0.55 upward.
+\item \textbf{Config synced (14 Nov 2026).} \code{framework/config.py} previously held
+  0.2 / 0.10 / 10 / 0.50; it now holds the values the run used, 0.3 / 0.20 / 1.0 / 0.40.
+\item \textbf{Two 6D reference files disagree.} The \code{\_results\_final} file gives 0.642
+  macro-F1. An older 6D file in the root \code{results/} folder
+  (\code{test\_set\_1\_results.json}), used in the collaborator's report, gives 0.633. One must
+  be designated as the reference.
+\item \textbf{Language detection is unseeded.} The collaborator's rerun found the mismatch feature
+  changed on 7 test examples between runs; this rerun's files are not in the repository, so it
+  is unverified here.
+\item \textbf{Minor overlap.} 9 of 1{,}272 FaithDial test examples share an identical passage with
+  a dev example.
+\item \textbf{The test set is no longer untouched.} It has now informed design decisions,
+  including dropping $k$ and query length.
+\end{itemize}
+
+\section{Implications for the paper}
+
+Several statements in the guiding draft cannot be kept. ``Training-free'' is inaccurate, since
+the policy is trained on 1{,}000 labelled examples. Dispersion as ``a reliable proxy for conflict''
+and NLI as the driver of conflict disclosure are contradicted by Section~4. The draft's
+human-annotation protocol, GPT-4 baselines, hallucination and Brier metrics, and out-of-domain
+gains have no counterpart in the experiments so far.
+
+\section{Recommended next steps}
+
+\begin{enumerate}
+\item \textbf{Rebuild the benchmark} so that passage count and source cannot predict the label:
+  fix $k$ for every example and make each source contribute at least two labels. Create a fresh
+  test split and leave it untouched until the end.
+\item \textbf{Decide what DISCLAIMER means.} Either redefine it from the evidence (on-topic passage
+  that lacks the answer) or reduce to three actions.
+\item \textbf{Revisit the features on dev only.} Candidates: agreement between answers extracted
+  from each passage in place of passage-level NLI, a continuous question--passage similarity in
+  place of the binary mismatch flag, and the QA model's no-answer score.
+\item \textbf{Fix the pipeline before rerunning.} Seed language detection, sync \code{config.py},
+  add a routing-only mode that skips generation explicitly, and choose one 6D reference file.
+\item \textbf{Strengthen baselines and controls.} Always report majority class, the $k$-only rule
+  and $k$ + query length. Add a few-shot LLM router, an NLI-threshold rule, and a fine-tuned
+  small classifier as an upper bound.
+\item \textbf{Run the remaining analyses.} Calibration (Brier, ECE, risk--coverage),
+  leave-one-source-out, a learning curve over dev size, hyperparameter sensitivity from the saved
+  grid, and CPU latency.
+\item \textbf{Rename the method and cite Wang et al.\ (2026)}, arXiv:2605.17301, which already
+  uses the name ConflictRAG.
+\end{enumerate}
+
+{\small\textbf{Sources.} Server logs in \code{logs/} dated 31 October; the \code{test\_set\_1\_4D\_*}
+files in \code{results/} (results, eval, ablation, both grid searches); the Vanilla and CRAG
+result files; and \code{test\_set\_1\_results\_final.json} for 6D. Baseline, $k$-rule, AUROC,
+feature-mean and seen/unseen figures were recomputed from the saved per-example predictions for
+this report.}
+
+\end{document}

@@ -3,8 +3,12 @@ import torch
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sentence_transformers import SentenceTransformer, CrossEncoder
 from transformers import AutoTokenizer, AutoModelForQuestionAnswering
-from langdetect import detect, LangDetectException
+from langdetect import DetectorFactory, detect, LangDetectException
 from framework import config
+
+# langdetect is non-deterministic unless seeded; unseeded runs changed the mismatch feature on a
+# handful of test examples. Seeded from 2026-11-14 (runs before that were unseeded).
+DetectorFactory.seed = 0
 
 # Bump whenever extract_raw() semantics change, so cached raw features are invalidated.
 # (Unchanged by the 4D switch: extract_raw() output is identical; only features_from_raw() changed.)

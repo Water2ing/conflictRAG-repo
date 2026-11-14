@@ -1,0 +1,151 @@
+{
+  "n": 3073,
+  "n_bootstrap": 1000,
+  "systems": {
+    "4D policy": {
+      "macro_f1": 0.6015029392977499,
+      "accuracy": 0.7347868532378783,
+      "class_f1": {
+        "ABSTAIN": 0.6729957805907173,
+        "ANSWER": 0.8279503105590063,
+        "DISCLAIMER": 0.1050656660412758,
+        "DISCLOSE": 0.8
+      },
+      "accuracy_by_source": {
+        "conflictqa": 0.932,
+        "faithdial": 0.779874213836478,
+        "nomiracl": 0.7456140350877193,
+        "pubmedqa": 0.6601073345259392,
+        "rgb": 0.64,
+        "whoqa": 0.37333333333333335
+      },
+      "accuracy_seen_sources": 0.7778691896338955,
+      "accuracy_unseen_sources": 0.5716510903426791
+    },
+    "6D policy (previous)": {
+      "macro_f1": 0.642072925661332,
+      "accuracy": 0.7246989912137975,
+      "class_f1": {
+        "ABSTAIN": 0.7630285152409046,
+        "ANSWER": 0.7841322314049587,
+        "DISCLAIMER": 0.17563739376770537,
+        "DISCLOSE": 0.8454935622317596
+      },
+      "accuracy_by_source": {
+        "conflictqa": 0.96,
+        "faithdial": 0.6957547169811321,
+        "nomiracl": 0.9035087719298246,
+        "pubmedqa": 0.6493738819320215,
+        "rgb": 0.79,
+        "whoqa": 0.37
+      },
+      "accuracy_seen_sources": 0.7433155080213903,
+      "accuracy_unseen_sources": 0.6542056074766355,
+      "delta_vs_4D": 0.04056998636358211,
+      "delta_ci95": [
+        0.025498972735484973,
+        0.05619901017417598
+      ]
+    },
+    "Vanilla LLM router": {
+      "macro_f1": 0.19453501314521726,
+      "accuracy": 0.3036121054344289,
+      "class_f1": {
+        "ABSTAIN": 0.11018363939899833,
+        "ANSWER": 0.4574300973923971,
+        "DISCLAIMER": 0.21052631578947367,
+        "DISCLOSE": 0.0
+      },
+      "accuracy_by_source": {
+        "conflictqa": 0.0,
+        "faithdial": 0.330188679245283,
+        "nomiracl": 0.0935672514619883,
+        "pubmedqa": 0.7495527728085868,
+        "rgb": 0.01,
+        "whoqa": 0.20333333333333334
+      },
+      "accuracy_seen_sources": 0.34553681612505144,
+      "accuracy_unseen_sources": 0.14485981308411214,
+      "delta_vs_4D": -0.40696792615253263,
+      "delta_ci95": [
+        -0.429158517961013,
+        -0.3848787887908378
+      ]
+    },
+    "Static-CRAG": {
+      "macro_f1": 0.17955778185348983,
+      "accuracy": 0.40286365115522293,
+      "class_f1": {
+        "ABSTAIN": 0.0659090909090909,
+        "ANSWER": 0.577509068923821,
+        "DISCLAIMER": 0.07481296758104738,
+        "DISCLOSE": 0.0
+      },
+      "accuracy_by_source": {
+        "conflictqa": 0.0,
+        "faithdial": 0.5039308176100629,
+        "nomiracl": 0.0847953216374269,
+        "pubmedqa": 0.8908765652951699,
+        "rgb": 0.0,
+        "whoqa": 0.23333333333333334
+      },
+      "accuracy_seen_sources": 0.46853146853146854,
+      "accuracy_unseen_sources": 0.1542056074766355,
+      "delta_vs_4D": -0.4219451574442601,
+      "delta_ci95": [
+        -0.44204599302213654,
+        -0.40184390488368116
+      ]
+    },
+    "Control: k-only rule": {
+      "macro_f1": 0.6650056902616854,
+      "accuracy": 0.8467295802147738,
+      "class_f1": {
+        "ABSTAIN": 0.8724489795918368,
+        "ANSWER": 0.8918682599825124,
+        "DISCLAIMER": 0.0,
+        "DISCLOSE": 0.8957055214723927
+      },
+      "accuracy_by_source": {
+        "conflictqa": 1.0,
+        "faithdial": 0.809748427672956,
+        "nomiracl": 1.0,
+        "pubmedqa": 0.8944543828264758,
+        "rgb": 0.0,
+        "whoqa": 0.7666666666666667
+      },
+      "accuracy_seen_sources": 0.835047305635541,
+      "accuracy_unseen_sources": 0.8909657320872274,
+      "delta_vs_4D": 0.06350275096393554,
+      "delta_ci95": [
+        0.04639297189635093,
+        0.08094604931318151
+      ]
+    },
+    "Control: always ANSWER": {
+      "macro_f1": 0.17119623368285897,
+      "accuracy": 0.5206638464041653,
+      "class_f1": {
+        "ABSTAIN": 0.0,
+        "ANSWER": 0.6847849347314359,
+        "DISCLAIMER": 0.0,
+        "DISCLOSE": 0.0
+      },
+      "accuracy_by_source": {
+        "conflictqa": 0.0,
+        "faithdial": 0.809748427672956,
+        "nomiracl": 0.0,
+        "pubmedqa": 0.8944543828264758,
+        "rgb": 0.0,
+        "whoqa": 0.23333333333333334
+      },
+      "accuracy_seen_sources": 0.6293706293706294,
+      "accuracy_unseen_sources": 0.10903426791277258,
+      "delta_vs_4D": -0.4303067056148909,
+      "delta_ci95": [
+        -0.4478280299367077,
+        -0.4139470833711305
+      ]
+    }
+  }
+}

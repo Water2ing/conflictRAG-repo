@@ -3,13 +3,17 @@ Joint grid search over (tau_s, TF-IDF threshold, C, theta) with 5-fold stratifie
 dev_set_natural, for the 4D policy [D, C-hat, S, L]. Uses the SAME FeatureExtractor.extract_raw()
 as test-time inference, so dev tuning and test evaluation compute identical features.
 
-The ranges are wider than in the 6D run, where the optimum sat on the grid edge
-(tau_s=0.2 was the minimum; C=10 was the maximum). The script warns if the 4D optimum is
-again on an edge.
+Usage:
+  python development/joint_grid_search.py              # main grid (18,480 configs)
+  python development/joint_grid_search.py --tfidf-ext  # TF-IDF extended to 0.18-0.50 (15,120)
 
-All combinations are saved to results/<RUN_TAG>_grid_search.json for sensitivity analysis.
+The 31 Oct 2026 main run put the TF-IDF optimum on the grid edge (0.20), so the extended run
+was used to confirm it; the optimum did not move. The script warns if the optimum is on an edge.
+
+Results: results/<RUN_TAG>_grid_search_full.json (main) or ..._grid_search_tfidf_ext.json.
 config.py is NOT updated automatically: adopting new hyperparameters is a methodology decision.
 """
+import argparse
 import json
 import os
 import sys
@@ -29,12 +33,18 @@ from framework.feature_extractor import FEATURE_NAMES, FeatureExtractor, feature
 from framework.logger import log_run
 from framework.policy import gated_predict, make_policy_model
 
+_parser = argparse.ArgumentParser()
+_parser.add_argument("--tfidf-ext", action="store_true", help="extended TF-IDF grid 0.18-0.50")
+ARGS = _parser.parse_args()
+
 DATA_PATH = os.path.join(ROOT_DIR, "data", "dev_set_natural.jsonl")
 RAW_CACHE = os.path.join(ROOT_DIR, "data", "cache", "raw_dev_set_natural.json")
-GRID_RESULTS_PATH = os.path.join(ROOT_DIR, "results", f"{config.RUN_TAG}_grid_search.json")
+_SUFFIX = "grid_search_tfidf_ext" if ARGS.tfidf_ext else "grid_search_full"
+GRID_RESULTS_PATH = os.path.join(ROOT_DIR, "results", f"{config.RUN_TAG}_{_SUFFIX}.json")
 
 TAU_VALUES = [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80]
-TFIDF_VALUES = [0.02, 0.04, 0.06, 0.08, 0.09, 0.10, 0.12, 0.14, 0.16, 0.18, 0.20]
+TFIDF_VALUES = ([0.18, 0.20, 0.22, 0.25, 0.28, 0.30, 0.35, 0.40, 0.50] if ARGS.tfidf_ext else
+                [0.02, 0.04, 0.06, 0.08, 0.09, 0.10, 0.12, 0.14, 0.16, 0.18, 0.20])
 C_VALUES = [0.001, 0.01, 0.1, 1.0, 10.0, 100.0, 1000.0]
 THETA_VALUES = config.THETA_GRID
 

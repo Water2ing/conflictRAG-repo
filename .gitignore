@@ -1,31 +1,37 @@
-cat > .gitignore << 'EOF'                                                                                                                                                          
-    # Virtual Environments                                                                                                                                                             
-    venv/                                                                                                                                                                              
-    env/                                                                                                                                                                               
-    __pycache__/                                                                                                                                                                       
-    *.pyc   
+# Python
+venv/
+env/
+__pycache__/
+*.pyc
 
+# Model weights and caches (too large for GitHub)
+local_models/
+models/.cache/
+models/*.joblib
+!models/policy_dev_set_natural_4D.joblib
+*.gguf
 
-# Model Weights (Too large for GitHub) - IGNORE ENTIRE DIRECTORIES                                                                                                                 
-local_models/                                                                                                                                                                      
-models/.cache/  
-models/*.joblib                                                                                                                                                                   
-*.gguf                                                                                                                                                                             
-                                                                                                                                                                                
-# SSH Keys & Secrets                                                                                                                                                               
-*.key                                                                                                                                                                              
-                                                                                                                                                                                
-# Large Data                                                                                                                                                                       
-data/t5_training_data/                                                                                                                                                             
-data/*.npy                                                                                                                                                                         
-data/WhoQA.json                                                                                                                                                                    
-                                                                                                                                                                                
-# IDE/OS                                                                                                                                                                           
-.marscode/                                                                                                                                                                         
-.DS_Store                                                                                                                                                                          
-EOF    
+# Secrets
+*.key
 
+# Large or regenerable data
+data/t5_training_data/
+data/*.npy
+data/WhoQA.json
 
-# Large Data (Optional, uncomment if you want to exclude them)
- data/WhoQA.json
-# data/t5_training_data/
+# LaTeX build files
+*.aux
+*.log
+!logs/*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# IDE / OS
+.marscode/
+.vscode/
+.DS_Store
