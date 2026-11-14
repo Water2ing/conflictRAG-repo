@@ -65,8 +65,8 @@ data/
   dev_set_natural.jsonl   1,000 examples, used for ALL tuning and training
   test_set_1.jsonl        3,073 examples, used only for final evaluation
   generate_dev_natural.py / test_set_1.py   rebuild the two sets from the public datasets (Hugging Face)
-  cache/                  raw-feature caches written by the scripts (see "Reproducing")
-models/         trained policy (policy_dev_set_natural_4D.joblib)
+  cache/                  raw-feature caches; not committed, regenerate first (see "Reproducing")
+models/         trained policy policy_dev_set_natural_4D.joblib; not committed, regenerate first
 results/        result files, see below
 logs/           console logs and pip freeze of the 31 Oct 2026 server run
 docs/           progress deck and technical report (PDF + LaTeX source)
@@ -109,14 +109,30 @@ PubMedQA's "maybe" decisions.
 
 ## Reproducing
 
+> **Missing artifacts.** The trained policy `models/policy_dev_set_natural_4D.joblib` and the
+> raw-feature caches `data/cache/*.json` from the 31 Oct 2026 server run were not saved, so they
+> are not in this repo. They must be regenerated before `framework/main.py` or
+> `development/ablation_study.py` can run:
+>
+> 1. `python development/joint_grid_search.py` extracts raw features for dev and writes
+>    `data/cache/raw_dev_set_natural.json` (GPU recommended). The hyperparameters are already
+>    locked in `config.py`, so this step is needed only for the cache.
+> 2. `python development/train_policy.py` writes `models/policy_dev_set_natural_4D.joblib`.
+> 3. `python development/ablation_study.py` (or `framework/main.py`) extracts the test features
+>    and writes `data/cache/raw_test_set_1.json`.
+>
+> `development/evaluate.py` does not need either artifact; it reads the saved result files.
+> Regenerated numbers may differ very slightly from the committed results (see the notes on
+> language detection and CPU/GPU below).
+
 ```bash
 python3.10 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 
 python development/evaluate.py                 # CPU only: reproduces the results table from results/*.json
-python development/joint_grid_search.py        # GPU recommended (feature extraction)
-python development/train_policy.py
-python development/ablation_study.py
+python development/joint_grid_search.py        # GPU recommended; also builds data/cache/raw_dev_set_natural.json
+python development/train_policy.py             # -> models/policy_dev_set_natural_4D.joblib
+python development/ablation_study.py           # also builds data/cache/raw_test_set_1.json
 python framework/main.py
 ```
 
