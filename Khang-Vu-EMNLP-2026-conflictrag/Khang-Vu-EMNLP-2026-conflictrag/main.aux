@@ -1,0 +1,1343 @@
+\relax 
+\bibstyle{acl_natbib}
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{lewis2020rag}
+\citation{nakano2021webgpt,gao2023enabling}
+\citation{zhang2023siren,bang2023multitask}
+\citation{guo2017calibration,maynez2020faithfulness}
+\citation{retrievalrobust2024,nomiracl2024}
+\citation{kuhn2023semantic,kadavath2022language}
+\citation{factscore2023,minicheck2024,li2023halueval}
+\citation{chen2022rich,conflictqa2023,xie2023adaptive}
+\@LN@col{1}
+\providecommand \oddpage@label [2]{}
+\@LN{0}{0}
+\@LN{1}{0}
+\@LN{2}{0}
+\@LN{3}{0}
+\@LN{4}{0}
+\@LN{5}{0}
+\@LN{6}{0}
+\@LN{7}{0}
+\@LN{8}{0}
+\@LN{9}{0}
+\@LN{10}{0}
+\@LN{11}{0}
+\@LN{12}{0}
+\@LN{13}{0}
+\@LN{14}{0}
+\@LN{15}{0}
+\@LN{16}{0}
+\@LN{17}{0}
+\@LN{18}{0}
+\@LN{19}{0}
+\@LN{20}{0}
+\@LN{21}{0}
+\@LN{22}{0}
+\@LN{23}{0}
+\@LN{24}{0}
+\@LN{25}{0}
+\@LN{26}{0}
+\@LN{27}{0}
+\@LN{28}{0}
+\@LN{29}{0}
+\@LN{30}{0}
+\@LN{31}{0}
+\@LN{32}{0}
+\@LN{33}{0}
+\@LN{34}{0}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\@LN{35}{0}
+\@LN{36}{0}
+\@LN{37}{0}
+\@LN{38}{0}
+\@LN{39}{0}
+\@LN{40}{0}
+\@LN{41}{0}
+\@LN{42}{0}
+\@LN@col{2}
+\@LN{43}{0}
+\@LN{44}{0}
+\@LN{45}{0}
+\@LN{46}{0}
+\@LN{47}{0}
+\@LN{48}{0}
+\@LN{49}{0}
+\@LN{50}{0}
+\@LN{51}{0}
+\@LN{52}{0}
+\@LN{53}{0}
+\@LN{54}{0}
+\@LN{55}{0}
+\@LN{56}{0}
+\@LN{57}{0}
+\@LN{58}{0}
+\@LN{59}{0}
+\@LN{60}{0}
+\@LN{61}{0}
+\@LN{62}{0}
+\@LN{63}{0}
+\@LN{64}{0}
+\@LN{65}{0}
+\@LN{66}{0}
+\@LN{67}{0}
+\@LN{68}{0}
+\@LN{69}{0}
+\@LN{70}{0}
+\@LN{71}{0}
+\@LN{72}{0}
+\@LN{73}{0}
+\@LN{74}{0}
+\@LN{75}{0}
+\@LN{76}{0}
+\@LN{77}{0}
+\@LN{78}{0}
+\@LN{79}{0}
+\@LN{80}{0}
+\@LN{81}{0}
+\@LN{82}{0}
+\@LN{83}{0}
+\citation{lewis2020rag}
+\citation{dpr2020}
+\citation{colbert2020}
+\citation{shi2023large}
+\citation{retrievalrobust2024}
+\citation{nomiracl2024}
+\citation{trivedi2023interleaving}
+\citation{asai2024selfrag}
+\citation{chen2022rich}
+\citation{conflictqa2023}
+\citation{xie2023adaptive}
+\citation{longpre2021entity}
+\citation{petroni2019language}
+\citation{mallen2023trust}
+\citation{whoqa2025}
+\citation{factscore2023}
+\citation{minicheck2024}
+\citation{thorne2018fever}
+\citation{maynez2020faithfulness}
+\citation{kadavath2022language,kuhn2023semantic,guo2017calibration,zhao2021calibrate}
+\citation{dziri2022faithdial}
+\citation{geifman2017selective,varshney2022investigating}
+\citation{chen2023selftransition}
+\citation{peng2023check,zhao2024knowcot}
+\@LN@col{1}
+\@LN{84}{1}
+\@LN{85}{1}
+\@LN{86}{1}
+\@LN{87}{1}
+\@LN{88}{1}
+\@LN{89}{1}
+\@LN{90}{1}
+\@LN{91}{1}
+\@LN{92}{1}
+\@LN{93}{1}
+\@LN{94}{1}
+\@LN{95}{1}
+\@LN{96}{1}
+\@LN{97}{1}
+\@LN{98}{1}
+\@LN{99}{1}
+\@LN{100}{1}
+\@LN{101}{1}
+\@LN{102}{1}
+\@LN{103}{1}
+\@LN{104}{1}
+\@LN{105}{1}
+\@LN{106}{1}
+\@LN{107}{1}
+\@LN{108}{1}
+\@LN{109}{1}
+\@LN{110}{1}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.2}\protected@file@percent }
+\newlabel{sec:related}{{2}{2}{Related Work}{section.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{RAG robustness and retrieval quality.}{2}{section*.1}\protected@file@percent }
+\@LN{111}{1}
+\@LN{112}{1}
+\@LN{113}{1}
+\@LN{114}{1}
+\@LN{115}{1}
+\@LN{116}{1}
+\@LN{117}{1}
+\@LN{118}{1}
+\@LN{119}{1}
+\@LN{120}{1}
+\@LN{121}{1}
+\@LN{122}{1}
+\@LN{123}{1}
+\@LN{124}{1}
+\@LN{125}{1}
+\@LN{126}{1}
+\@LN{127}{1}
+\@LN{128}{1}
+\@LN{129}{1}
+\@LN{130}{1}
+\@LN{131}{1}
+\@LN@col{2}
+\@LN{132}{1}
+\@LN{133}{1}
+\@LN{134}{1}
+\@LN{135}{1}
+\@LN{136}{1}
+\@LN{137}{1}
+\@writefile{toc}{\contentsline {paragraph}{Conflicting evidence and reading comprehension under uncertainty.}{2}{section*.2}\protected@file@percent }
+\@LN{138}{1}
+\@LN{139}{1}
+\@LN{140}{1}
+\@LN{141}{1}
+\@LN{142}{1}
+\@LN{143}{1}
+\@LN{144}{1}
+\@LN{145}{1}
+\@LN{146}{1}
+\@LN{147}{1}
+\@LN{148}{1}
+\@LN{149}{1}
+\@LN{150}{1}
+\@LN{151}{1}
+\@LN{152}{1}
+\@LN{153}{1}
+\@LN{154}{1}
+\@LN{155}{1}
+\@LN{156}{1}
+\@LN{157}{1}
+\@LN{158}{1}
+\@LN{159}{1}
+\@LN{160}{1}
+\@LN{161}{1}
+\@LN{162}{1}
+\@LN{163}{1}
+\@writefile{toc}{\contentsline {paragraph}{Hallucination detection and uncertainty quantification.}{2}{section*.3}\protected@file@percent }
+\@LN{164}{1}
+\@LN{165}{1}
+\@LN{166}{1}
+\@LN{167}{1}
+\@LN{168}{1}
+\@LN{169}{1}
+\@LN{170}{1}
+\@LN{171}{1}
+\@LN{172}{1}
+\@LN{173}{1}
+\@LN{174}{1}
+\@LN{175}{1}
+\@LN{176}{1}
+\@LN{177}{1}
+\@LN{178}{1}
+\@LN{179}{1}
+\@LN{180}{1}
+\@LN{181}{1}
+\@LN{182}{1}
+\citation{reimers2019sentence}
+\@LN@col{1}
+\@LN{183}{2}
+\@LN{184}{2}
+\@LN{185}{2}
+\@LN{186}{2}
+\@LN{187}{2}
+\@LN{188}{2}
+\@LN{189}{2}
+\@LN{190}{2}
+\@LN{191}{2}
+\@LN{192}{2}
+\@LN{193}{2}
+\@LN{194}{2}
+\@LN{195}{2}
+\@LN{196}{2}
+\@LN{197}{2}
+\@writefile{toc}{\contentsline {section}{\numberline {3}ConflictRAG{}: Method}{3}{section.3}\protected@file@percent }
+\newlabel{sec:method}{{3}{3}{\method {}: Method}{section.3}{}}
+\@LN{198}{2}
+\@LN{199}{2}
+\@LN{200}{2}
+\@LN{201}{2}
+\@LN{202}{2}
+\@LN{203}{2}
+\@LN{204}{2}
+\@LN{205}{2}
+\@LN{206}{2}
+\@LN{207}{2}
+\@LN{208}{2}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Feature Extraction}{3}{subsection.3.1}\protected@file@percent }
+\@LN{209}{2}
+\@LN{210}{2}
+\@writefile{toc}{\contentsline {paragraph}{Retrieval Dispersion Score.}{3}{section*.4}\protected@file@percent }
+\@LN{211}{2}
+\@LN{212}{2}
+\@LN{213}{2}
+\@LN{214}{2}
+\@LN{215}{2}
+\@LN{216}{2}
+\newlabel{eq:dispersion}{{1}{3}{Retrieval Dispersion Score}{equation.3.1}{}}
+\@LN{217}{2}
+\@LN{218}{2}
+\@LN{219}{2}
+\@LN{220}{2}
+\@LN{221}{2}
+\@LN{222}{2}
+\@writefile{toc}{\contentsline {paragraph}{Lexical Contradiction Cues.}{3}{section*.5}\protected@file@percent }
+\@LN{223}{2}
+\@LN{224}{2}
+\@LN{225}{2}
+\@LN{226}{2}
+\@LN{227}{2}
+\@LN{228}{2}
+\@LN@col{2}
+\@LN{229}{2}
+\@LN{230}{2}
+\@LN{231}{2}
+\@writefile{toc}{\contentsline {paragraph}{Semantic Claim Support.}{3}{section*.6}\protected@file@percent }
+\@LN{232}{2}
+\@LN{233}{2}
+\@LN{234}{2}
+\@LN{235}{2}
+\@LN{236}{2}
+\@LN{237}{2}
+\@LN{238}{2}
+\@LN{239}{2}
+\@LN{240}{2}
+\@LN{241}{2}
+\@LN{242}{2}
+\@writefile{toc}{\contentsline {paragraph}{Language and Domain Mismatch.}{3}{section*.7}\protected@file@percent }
+\@LN{243}{2}
+\@LN{244}{2}
+\@LN{245}{2}
+\@LN{246}{2}
+\@LN{247}{2}
+\@LN{248}{2}
+\@LN{249}{2}
+\@LN{250}{2}
+\@LN{251}{2}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Policy Decision Layer}{3}{subsection.3.2}\protected@file@percent }
+\@LN{252}{2}
+\@LN{253}{2}
+\@LN{254}{2}
+\@LN{255}{2}
+\@LN{256}{2}
+\@LN{257}{2}
+\@LN{258}{2}
+\@LN{259}{2}
+\@LN{260}{2}
+\@LN{261}{2}
+\@LN{262}{2}
+\@LN{263}{2}
+\@LN{264}{2}
+\@LN{265}{2}
+\@LN{266}{2}
+\@LN{267}{2}
+\@LN{268}{2}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Response Generation}{3}{subsection.3.3}\protected@file@percent }
+\@LN{269}{2}
+\@LN{270}{2}
+\@LN{271}{2}
+\@LN{272}{2}
+\citation{whoqa2025}
+\citation{yang2018hotpotqa}
+\citation{nomiracl2024}
+\citation{conflictqa2023}
+\citation{dziri2022faithdial}
+\citation{cohen1960coefficient}
+\citation{dubey2024llama3}
+\citation{rajpurkar2016squad}
+\citation{factscore2023}
+\@LN@col{1}
+\@LN{273}{3}
+\@LN{274}{3}
+\@LN{275}{3}
+\@LN{276}{3}
+\@LN{277}{3}
+\@LN{278}{3}
+\@LN{279}{3}
+\@LN{280}{3}
+\@LN{281}{3}
+\@LN{282}{3}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Complexity and Deployment}{4}{subsection.3.4}\protected@file@percent }
+\@LN{283}{3}
+\@LN{284}{3}
+\@LN{285}{3}
+\@LN{286}{3}
+\@LN{287}{3}
+\@LN{288}{3}
+\@LN{289}{3}
+\@LN{290}{3}
+\@LN{291}{3}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experimental Setup}{4}{section.4}\protected@file@percent }
+\newlabel{sec:setup}{{4}{4}{Experimental Setup}{section.4}{}}
+\@LN{292}{3}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Datasets}{4}{subsection.4.1}\protected@file@percent }
+\@LN{293}{3}
+\@LN{294}{3}
+\@LN{295}{3}
+\@LN{296}{3}
+\@LN{297}{3}
+\@LN{298}{3}
+\@LN{299}{3}
+\@LN{300}{3}
+\@LN{301}{3}
+\@LN{302}{3}
+\@LN{303}{3}
+\@LN{304}{3}
+\@LN{305}{3}
+\@LN{306}{3}
+\@LN{307}{3}
+\@LN{308}{3}
+\@LN{309}{3}
+\@LN{310}{3}
+\@LN{311}{3}
+\@LN{312}{3}
+\@LN{313}{3}
+\@LN{314}{3}
+\@LN{315}{3}
+\@LN{316}{3}
+\@LN{317}{3}
+\@LN{318}{3}
+\@LN{319}{3}
+\@LN{320}{3}
+\@LN{321}{3}
+\@LN@col{2}
+\@LN{322}{3}
+\@LN{323}{3}
+\@LN{324}{3}
+\@LN{325}{3}
+\@LN{326}{3}
+\@LN{327}{3}
+\@LN{328}{3}
+\@LN{329}{3}
+\@LN{330}{3}
+\@LN{331}{3}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Baselines}{4}{subsection.4.2}\protected@file@percent }
+\@LN{332}{3}
+\@LN{333}{3}
+\@LN{334}{3}
+\@LN{335}{3}
+\@LN{336}{3}
+\@LN{337}{3}
+\@LN{338}{3}
+\@LN{339}{3}
+\@LN{340}{3}
+\@LN{341}{3}
+\@LN{342}{3}
+\@LN{343}{3}
+\@LN{344}{3}
+\@LN{345}{3}
+\@LN{346}{3}
+\@LN{347}{3}
+\@LN{348}{3}
+\@LN{349}{3}
+\@LN{350}{3}
+\@LN{351}{3}
+\@LN{352}{3}
+\@LN{353}{3}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Metrics}{4}{subsection.4.3}\protected@file@percent }
+\@LN{354}{3}
+\@LN{355}{3}
+\@LN{356}{3}
+\@LN{357}{3}
+\@LN{358}{3}
+\@LN{359}{3}
+\@LN{360}{3}
+\@LN{361}{3}
+\@LN{362}{3}
+\@LN{363}{3}
+\@LN{364}{3}
+\@LN{365}{3}
+\@LN{366}{3}
+\@LN{367}{3}
+\@LN{368}{3}
+\@LN{369}{3}
+\@LN{370}{3}
+\citation{brier1950verification}
+\citation{pubmedqa2019}
+\citation{asqa2022}
+\@LN@col{1}
+\@LN{371}{4}
+\@LN{372}{4}
+\@LN{373}{4}
+\@LN{374}{4}
+\@LN{375}{4}
+\@LN{376}{4}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Evaluation Protocol}{5}{subsection.4.4}\protected@file@percent }
+\@LN{377}{4}
+\@LN{378}{4}
+\@LN{379}{4}
+\@LN{380}{4}
+\@LN{381}{4}
+\@LN{382}{4}
+\@LN{383}{4}
+\@LN{384}{4}
+\@LN{385}{4}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Implementation Details}{5}{subsection.4.5}\protected@file@percent }
+\@LN{386}{4}
+\@LN{387}{4}
+\@LN{388}{4}
+\@LN{389}{4}
+\@LN{390}{4}
+\@LN{391}{4}
+\@LN{392}{4}
+\@LN{393}{4}
+\@LN{394}{4}
+\@LN{395}{4}
+\@LN{396}{4}
+\@LN{397}{4}
+\@LN{398}{4}
+\@LN{399}{4}
+\@LN{400}{4}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Results}{5}{section.5}\protected@file@percent }
+\newlabel{sec:results}{{5}{5}{Results}{section.5}{}}
+\@LN{401}{4}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Main Results}{5}{subsection.5.1}\protected@file@percent }
+\@LN{402}{4}
+\@LN{403}{4}
+\@LN{404}{4}
+\@LN{405}{4}
+\@LN{406}{4}
+\@LN{407}{4}
+\@LN{408}{4}
+\@LN{409}{4}
+\@LN{410}{4}
+\@LN{411}{4}
+\@LN{412}{4}
+\@LN{413}{4}
+\@LN{414}{4}
+\@LN{415}{4}
+\@LN{416}{4}
+\@LN{417}{4}
+\@LN{418}{4}
+\@LN@col{2}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Accuracy-abstention Pareto frontier for ConflictRAG{} as the decision threshold $\theta $ varies from 0 to 1 (shown as points on the curve). Each point represents a different operating threshold; the star marks $\theta ^* = 0.55$ used in main results. No-filter RAG and GPT-4 Verifier are shown as fixed reference points. ConflictRAG{} traces a Pareto-improving curve relative to the Confidence Threshold baseline.}}{5}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:tradeoff}{{1}{5}{Accuracy-abstention Pareto frontier for \method {} as the decision threshold $\theta $ varies from 0 to 1 (shown as points on the curve). Each point represents a different operating threshold; the star marks $\theta ^* = 0.55$ used in main results. No-filter RAG and GPT-4 Verifier are shown as fixed reference points. \method {} traces a Pareto-improving curve relative to the Confidence Threshold baseline}{figure.caption.13}{}}
+\@LN{419}{4}
+\@LN{420}{4}
+\@LN{421}{4}
+\@LN{422}{4}
+\@LN{423}{4}
+\@LN{424}{4}
+\@LN{425}{4}
+\@LN{426}{4}
+\@LN{427}{4}
+\@LN{428}{4}
+\@LN{429}{4}
+\@LN{430}{4}
+\@LN{431}{4}
+\@LN{432}{4}
+\@writefile{toc}{\contentsline {paragraph}{Statistical Analysis.}{5}{section*.10}\protected@file@percent }
+\@LN{433}{4}
+\@LN{434}{4}
+\@LN{435}{4}
+\@LN{436}{4}
+\@LN{437}{4}
+\@LN{438}{4}
+\@LN{439}{4}
+\@LN{440}{4}
+\@LN{441}{4}
+\@LN{442}{4}
+\@LN{443}{4}
+\@LN{444}{4}
+\@LN{445}{4}
+\@LN{446}{4}
+\@LN{447}{4}
+\@LN{448}{4}
+\@LN{449}{4}
+\@writefile{toc}{\contentsline {paragraph}{Generalization to Held-Out Domains.}{5}{section*.15}\protected@file@percent }
+\@LN{450}{4}
+\@LN{451}{4}
+\@LN{452}{4}
+\@LN{453}{4}
+\citation{minicheck2024}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Main results on the full 3,073-example evaluation set. Ans.\ F1 is computed only on examples where the gold action is \textsc  {Answer}; Halluc.\ \% is the FActScore-based hallucination rate on generated answers; Abst.\ P/R are abstention precision and recall treating non-\textsc  {Answer} as positive; Conf.\ Disc.\ F1 is conflict disclosure F1 on conflicting-evidence examples; Brier is calibration score on the 266-example held-out set. Best in each column is bolded; oracle (GPT-4 Verifier) is separated by a rule. $^{\dagger }$~Significantly better than all non-oracle baselines (bootstrap test, $p{<}0.05$, $n{=}1000$ samples).}}{6}{table.caption.8}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:main}{{1}{6}{Main results on the full 3,073-example evaluation set. Ans.\ F1 is computed only on examples where the gold action is \textsc {Answer}; Halluc.\ \% is the FActScore-based hallucination rate on generated answers; Abst.\ P/R are abstention precision and recall treating non-\textsc {Answer} as positive; Conf.\ Disc.\ F1 is conflict disclosure F1 on conflicting-evidence examples; Brier is calibration score on the 266-example held-out set. Best in each column is bolded; oracle (GPT-4 Verifier) is separated by a rule. $^{\dagger }$~Significantly better than all non-oracle baselines (bootstrap test, $p{<}0.05$, $n{=}1000$ samples)}{table.caption.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Dataset statistics and evaluation roles. Items counts reflect final evaluation partitions after deduplication and format filtering. The dev set is used exclusively for logistic policy layer training and threshold selection; all reported metrics are on the held-out test splits.}}{6}{table.caption.9}\protected@file@percent }
+\newlabel{tab:dataset-matrix}{{2}{6}{Dataset statistics and evaluation roles. Items counts reflect final evaluation partitions after deduplication and format filtering. The dev set is used exclusively for logistic policy layer training and threshold selection; all reported metrics are on the held-out test splits}{table.caption.9}{}}
+\@LN@col{1}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Per-dataset Answer F1 and hallucination rate for the three key systems. ConflictRAG{} achieves the largest hallucination reductions on NoMIRACL and ConflictQA, with more modest gains on FaithDial.}}{6}{table.caption.11}\protected@file@percent }
+\newlabel{tab:per-dataset}{{3}{6}{Per-dataset Answer F1 and hallucination rate for the three key systems. \method {} achieves the largest hallucination reductions on NoMIRACL and ConflictQA, with more modest gains on FaithDial}{table.caption.11}{}}
+\@LN{454}{5}
+\@LN{455}{5}
+\@LN{456}{5}
+\@LN{457}{5}
+\@LN{458}{5}
+\@LN{459}{5}
+\@LN{460}{5}
+\@LN{461}{5}
+\@LN{462}{5}
+\@LN{463}{5}
+\@LN{464}{5}
+\@LN@col{2}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Error taxonomy for ConflictRAG{} on the full test set, based on manual annotation of 200 randomly sampled errors. Retrieval selection miss (choosing irrelevant passages as evidence) is the dominant failure mode; over-abstention is the rarest, confirming that the policy does not sacrifice too many answerable questions.}}{6}{table.caption.12}\protected@file@percent }
+\newlabel{tab:error-taxonomy}{{4}{6}{Error taxonomy for \method {} on the full test set, based on manual annotation of 200 randomly sampled errors. Retrieval selection miss (choosing irrelevant passages as evidence) is the dominant failure mode; over-abstention is the rarest, confirming that the policy does not sacrifice too many answerable questions}{table.caption.12}{}}
+\@LN{465}{5}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Analysis}{6}{section.6}\protected@file@percent }
+\newlabel{sec:analysis}{{6}{6}{Analysis}{section.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Ablation Study.}{6}{section*.20}\protected@file@percent }
+\@LN{466}{5}
+\@LN{467}{5}
+\@LN{468}{5}
+\@LN{469}{5}
+\@LN{470}{5}
+\@LN{471}{5}
+\@LN{472}{5}
+\@LN{473}{5}
+\@LN{474}{5}
+\@LN@col{1}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Answer F1 breakdown by dataset for the three key systems. ConflictRAG{} (red) outperforms the NLI Detector across all datasets and approaches No-filter RAG quality while achieving substantially lower hallucination rates. Error bars omitted for clarity; all differences over NLI Detector are significant at $p{<}0.05$.}}{7}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:main-bar}{{2}{7}{Answer F1 breakdown by dataset for the three key systems. \method {} (red) outperforms the NLI Detector across all datasets and approaches No-filter RAG quality while achieving substantially lower hallucination rates. Error bars omitted for clarity; all differences over NLI Detector are significant at $p{<}0.05$}{figure.caption.14}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Generalization results on two held-out domains not used during any development stage. ConflictRAG{} maintains its advantage over the strongest non-oracle baseline without any domain-specific adaptation. Primary metric: Answer F1. Bold = best per row.}}{7}{table.caption.16}\protected@file@percent }
+\newlabel{tab:generalization}{{5}{7}{Generalization results on two held-out domains not used during any development stage. \method {} maintains its advantage over the strongest non-oracle baseline without any domain-specific adaptation. Primary metric: Answer F1. Bold = best per row}{table.caption.16}{}}
+\@LN{475}{6}
+\@LN{476}{6}
+\@LN{477}{6}
+\@LN{478}{6}
+\@LN{479}{6}
+\@LN{480}{6}
+\@LN{481}{6}
+\@LN{482}{6}
+\@LN{483}{6}
+\@LN{484}{6}
+\@LN{485}{6}
+\@LN{486}{6}
+\@LN{487}{6}
+\@writefile{toc}{\contentsline {paragraph}{Component Interaction Effects.}{7}{section*.22}\protected@file@percent }
+\@LN{488}{6}
+\@LN{489}{6}
+\@LN{490}{6}
+\@LN{491}{6}
+\@LN{492}{6}
+\@LN{493}{6}
+\@LN{494}{6}
+\@LN@col{2}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Ablation study: overall F1 (harmonic mean of Answer F1 and Abstention F1) for the full ConflictRAG{} system and variants with individual components removed. Removing the dispersion score causes the largest drop (4.1 points), followed by the NLI contradiction feature (2.9 points). Removing language mismatch detection has a small but non-trivial effect (1.1 points).}}{7}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:ablation}{{3}{7}{Ablation study: overall F1 (harmonic mean of Answer F1 and Abstention F1) for the full \method {} system and variants with individual components removed. Removing the dispersion score causes the largest drop (4.1 points), followed by the NLI contradiction feature (2.9 points). Removing language mismatch detection has a small but non-trivial effect (1.1 points)}{figure.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Robustness of ConflictRAG{} across evaluation conditions: in-distribution (WhoQA + ConflictQA), out-of-distribution (NoMIRACL), high-noise (ConflictQA hard split with near-identical passages), and low-evidence (single retrieved passage). ConflictRAG{} degrades gracefully, with the largest drop occurring in the low-evidence setting where dispersion signals are uninformative.}}{7}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:robustness}{{4}{7}{Robustness of \method {} across evaluation conditions: in-distribution (WhoQA + ConflictQA), out-of-distribution (NoMIRACL), high-noise (ConflictQA hard split with near-identical passages), and low-evidence (single retrieved passage). \method {} degrades gracefully, with the largest drop occurring in the low-evidence setting where dispersion signals are uninformative}{figure.caption.18}{}}
+\@writefile{toc}{\contentsline {paragraph}{Hyperparameter Sensitivity.}{7}{section*.23}\protected@file@percent }
+\@LN{495}{6}
+\@LN{496}{6}
+\@LN{497}{6}
+\@LN{498}{6}
+\@LN{499}{6}
+\@LN{500}{6}
+\@LN{501}{6}
+\@LN{502}{6}
+\@writefile{toc}{\contentsline {paragraph}{Error Analysis.}{7}{section*.27}\protected@file@percent }
+\@LN{503}{6}
+\@LN{504}{6}
+\@LN{505}{6}
+\@LN{506}{6}
+\@LN{507}{6}
+\@LN{508}{6}
+\@LN{509}{6}
+\@LN{510}{6}
+\@LN{511}{6}
+\@LN@col{1}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Reliability diagram for ConflictRAG{}'s posterior probability of the \textsc  {Answer} action vs.\ empirical accuracy across five equal-frequency bins. The dashed line indicates perfect calibration. ConflictRAG{} is slightly overconfident in the 0.6--0.8 range (Brier score 0.214), performing substantially better than No-filter RAG (Brier 0.341) and comparably to the GPT-4 Verifier (Brier 0.198).}}{8}{figure.caption.19}\protected@file@percent }
+\newlabel{fig:calibration}{{5}{8}{Reliability diagram for \method {}'s posterior probability of the \textsc {Answer} action vs.\ empirical accuracy across five equal-frequency bins. The dashed line indicates perfect calibration. \method {} is slightly overconfident in the 0.6--0.8 range (Brier score 0.214), performing substantially better than No-filter RAG (Brier 0.341) and comparably to the GPT-4 Verifier (Brier 0.198)}{figure.caption.19}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Ablation study results. Overall F1 is the harmonic mean of Answer F1 (on answerable examples) and Abstention F1 (on non-answer examples). Single-component rows remove one feature group while keeping all others; joint rows remove two components simultaneously to assess interaction effects.}}{8}{table.caption.21}\protected@file@percent }
+\newlabel{tab:ablation}{{6}{8}{Ablation study results. Overall F1 is the harmonic mean of Answer F1 (on answerable examples) and Abstention F1 (on non-answer examples). Single-component rows remove one feature group while keeping all others; joint rows remove two components simultaneously to assess interaction effects}{table.caption.21}{}}
+\@LN{512}{7}
+\@LN{513}{7}
+\@LN{514}{7}
+\@LN{515}{7}
+\@LN{516}{7}
+\@LN{517}{7}
+\@LN{518}{7}
+\@LN{519}{7}
+\@LN{520}{7}
+\@LN{521}{7}
+\@LN{522}{7}
+\@LN{523}{7}
+\@LN{524}{7}
+\@LN@col{2}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Sensitivity of ConflictRAG{} to the claim support threshold $\tau _s$. The default value of 0.60 (bold) is near-optimal; performance is stable across a reasonable range of $[0.50, 0.70]$, declining at extreme values due to over-permissive or over-restrictive claim filtering.}}{8}{table.caption.24}\protected@file@percent }
+\newlabel{tab:hparam}{{7}{8}{Sensitivity of \method {} to the claim support threshold $\tau _s$. The default value of 0.60 (bold) is near-optimal; performance is stable across a reasonable range of $[0.50, 0.70]$, declining at extreme values due to over-permissive or over-restrictive claim filtering}{table.caption.24}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Overall F1 vs.\ training set fraction (percentage of the 587 development examples). ConflictRAG{} is robust above 50\% of the training data; performance degrades gracefully with smaller annotation budgets. The NLI Conflict Detector baseline is less sensitive to training data volume because it uses only fixed NLI features without logistic policy training, confirming that the ConflictRAG{} policy layer's data efficiency is strong even at 25\% of the dev set.}}{8}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:scaling}{{6}{8}{Overall F1 vs.\ training set fraction (percentage of the 587 development examples). \method {} is robust above 50\% of the training data; performance degrades gracefully with smaller annotation budgets. The NLI Conflict Detector baseline is less sensitive to training data volume because it uses only fixed NLI features without logistic policy training, confirming that the \method {} policy layer's data efficiency is strong even at 25\% of the dev set}{figure.caption.25}{}}
+\@writefile{toc}{\contentsline {paragraph}{Sensitivity Analysis.}{8}{section*.28}\protected@file@percent }
+\@LN{525}{7}
+\@LN{526}{7}
+\@LN{527}{7}
+\@LN{528}{7}
+\@LN{529}{7}
+\@LN{530}{7}
+\@LN{531}{7}
+\@LN{532}{7}
+\@LN{533}{7}
+\@LN{534}{7}
+\@LN{535}{7}
+\@LN{536}{7}
+\@LN{537}{7}
+\@LN{538}{7}
+\@LN{539}{7}
+\@LN{540}{7}
+\@LN{541}{7}
+\@LN{542}{7}
+\@writefile{toc}{\contentsline {paragraph}{Computational Efficiency.}{8}{section*.29}\protected@file@percent }
+\@LN{543}{7}
+\@LN{544}{7}
+\citation{pubmedqa2019}
+\citation{asqa2022}
+\@LN@col{1}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Performance--efficiency trade-off: overall F1 vs.\ inference latency per item for all evaluated systems. ConflictRAG{} (top-left) achieves the best F1 at the lowest latency, dominating all non-oracle systems on the Pareto frontier. GPT-4 Verifier is the only system with higher F1 (oracle), but at 1.7$\times $ the latency and significant API cost.}}{9}{figure.caption.26}\protected@file@percent }
+\newlabel{fig:tradeoff-scatter}{{7}{9}{Performance--efficiency trade-off: overall F1 vs.\ inference latency per item for all evaluated systems. \method {} (top-left) achieves the best F1 at the lowest latency, dominating all non-oracle systems on the Pareto frontier. GPT-4 Verifier is the only system with higher F1 (oracle), but at 1.7$\times $ the latency and significant API cost}{figure.caption.26}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Computational efficiency comparison. ConflictRAG{} achieves the highest throughput and lowest memory footprint. NLI Conflict Detector and GPT-4 Verifier refer to the top two baselines from Table~\ref {tab:main}. All runs use a single CPU thread; see Appendix~\ref {app:reproducibility} for full hardware details.}}{9}{table.caption.30}\protected@file@percent }
+\newlabel{tab:efficiency}{{8}{9}{Computational efficiency comparison. \method {} achieves the highest throughput and lowest memory footprint. NLI Conflict Detector and GPT-4 Verifier refer to the top two baselines from Table~\ref {tab:main}. All runs use a single CPU thread; see Appendix~\ref {app:reproducibility} for full hardware details}{table.caption.30}{}}
+\@LN{545}{8}
+\@LN{546}{8}
+\@LN{547}{8}
+\@LN{548}{8}
+\@LN{549}{8}
+\@LN{550}{8}
+\@writefile{toc}{\contentsline {paragraph}{Training Fraction Learning Curve.}{9}{section*.31}\protected@file@percent }
+\@LN{551}{8}
+\@LN{552}{8}
+\@LN{553}{8}
+\@LN{554}{8}
+\@LN{555}{8}
+\@LN{556}{8}
+\@LN{557}{8}
+\@LN{558}{8}
+\@LN{559}{8}
+\@LN{560}{8}
+\@LN{561}{8}
+\@writefile{toc}{\contentsline {paragraph}{Annotation-Noise Ablation (High-Agreement Subset).}{9}{section*.33}\protected@file@percent }
+\@LN{562}{8}
+\@LN{563}{8}
+\@LN{564}{8}
+\@LN@col{2}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Training fraction learning curve for ConflictRAG{}. F1 improves steeply from 1\% to 25\% of training data, then continues to grow with diminishing returns. The default full-data setting (100\%) achieves 81.2 F1.}}{9}{figure.caption.32}\protected@file@percent }
+\newlabel{fig:learning-curve}{{8}{9}{Training fraction learning curve for \method {}. F1 improves steeply from 1\% to 25\% of training data, then continues to grow with diminishing returns. The default full-data setting (100\%) achieves 81.2 F1}{figure.caption.32}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Annotation-noise ablation. Restricting evaluation to high inter-annotator agreement examples (IAA $>$ 0.8) yields a 2.2-point F1 gain (bootstrap $p = 0.008$, marked $^{**}$), indicating that ConflictRAG{} performance is robust to annotation noise and does not rely on noisy labels to inflate scores.}}{9}{table.caption.34}\protected@file@percent }
+\newlabel{tab:iaa-ablation}{{9}{9}{Annotation-noise ablation. Restricting evaluation to high inter-annotator agreement examples (IAA $>$ 0.8) yields a 2.2-point F1 gain (bootstrap $p = 0.008$, marked $^{**}$), indicating that \method {} performance is robust to annotation noise and does not rely on noisy labels to inflate scores}{table.caption.34}{}}
+\@LN{565}{8}
+\@LN{566}{8}
+\@LN{567}{8}
+\@LN{568}{8}
+\@LN{569}{8}
+\@LN{570}{8}
+\@LN{571}{8}
+\@LN{572}{8}
+\@writefile{toc}{\contentsline {paragraph}{Held-Out Generalization (Out-of-Domain Transfer).}{9}{section*.35}\protected@file@percent }
+\@LN{573}{8}
+\@LN{574}{8}
+\@LN{575}{8}
+\@LN{576}{8}
+\@LN{577}{8}
+\@LN{578}{8}
+\@LN{579}{8}
+\@LN{580}{8}
+\@LN{581}{8}
+\@LN{582}{8}
+\@LN{583}{8}
+\@LN{584}{8}
+\@LN{585}{8}
+\@LN{586}{8}
+\@LN@col{1}
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Out-of-domain generalization results on PubMedQA and ASQA. ConflictRAG{} is applied zero-shot (no training data from either dataset); the baseline is the NLI Conflict Detector from Table~\ref {tab:main}. Both gains exceed the typical in-domain improvement margin, demonstrating strong OOD transfer of the ConflictRAG{} policy layer.}}{10}{table.caption.36}\protected@file@percent }
+\newlabel{tab:ood-transfer}{{10}{10}{Out-of-domain generalization results on PubMedQA and ASQA. \method {} is applied zero-shot (no training data from either dataset); the baseline is the NLI Conflict Detector from Table~\ref {tab:main}. Both gains exceed the typical in-domain improvement margin, demonstrating strong OOD transfer of the \method {} policy layer}{table.caption.36}{}}
+\@LN{587}{9}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Limitations}{10}{section.7}\protected@file@percent }
+\newlabel{sec:limitations}{{7}{10}{Limitations}{section.7}{}}
+\@writefile{toc}{\contentsline {paragraph}{Computational scope.}{10}{section*.37}\protected@file@percent }
+\@LN{588}{9}
+\@LN{589}{9}
+\@LN{590}{9}
+\@LN{591}{9}
+\@LN{592}{9}
+\@LN{593}{9}
+\@LN{594}{9}
+\@LN{595}{9}
+\@LN{596}{9}
+\@LN{597}{9}
+\@LN{598}{9}
+\@LN{599}{9}
+\@LN{600}{9}
+\@LN{601}{9}
+\@LN{602}{9}
+\@writefile{toc}{\contentsline {paragraph}{Dataset coverage gaps.}{10}{section*.38}\protected@file@percent }
+\@LN{603}{9}
+\@LN{604}{9}
+\@LN{605}{9}
+\@LN{606}{9}
+\@LN{607}{9}
+\@LN{608}{9}
+\@LN{609}{9}
+\@LN{610}{9}
+\@LN{611}{9}
+\@LN{612}{9}
+\@LN{613}{9}
+\@writefile{toc}{\contentsline {paragraph}{Methodological limitation in policy label construction.}{10}{section*.39}\protected@file@percent }
+\@LN{614}{9}
+\@LN{615}{9}
+\@LN{616}{9}
+\@LN{617}{9}
+\@LN{618}{9}
+\@LN{619}{9}
+\@LN{620}{9}
+\@LN{621}{9}
+\@LN{622}{9}
+\@LN{623}{9}
+\@LN{624}{9}
+\@LN{625}{9}
+\@LN@col{2}
+\@LN{626}{9}
+\@writefile{toc}{\contentsline {paragraph}{Statistical Validity and Scope.}{10}{section*.40}\protected@file@percent }
+\@LN{627}{9}
+\@LN{628}{9}
+\@LN{629}{9}
+\@LN{630}{9}
+\@LN{631}{9}
+\@LN{632}{9}
+\@LN{633}{9}
+\@LN{634}{9}
+\@LN{635}{9}
+\@LN{636}{9}
+\@LN{637}{9}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Ethics Statement}{10}{section.8}\protected@file@percent }
+\newlabel{sec:ethics}{{8}{10}{Ethics Statement}{section.8}{}}
+\@LN{638}{9}
+\@LN{639}{9}
+\@LN{640}{9}
+\@LN{641}{9}
+\@LN{642}{9}
+\@writefile{toc}{\contentsline {paragraph}{Abstention and access.}{10}{section*.41}\protected@file@percent }
+\@LN{643}{9}
+\@LN{644}{9}
+\@LN{645}{9}
+\@LN{646}{9}
+\@LN{647}{9}
+\@LN{648}{9}
+\@LN{649}{9}
+\@LN{650}{9}
+\@LN{651}{9}
+\@LN{652}{9}
+\@LN{653}{9}
+\@writefile{toc}{\contentsline {paragraph}{Conflict disclosure and dual-use.}{10}{section*.42}\protected@file@percent }
+\@LN{654}{9}
+\@LN{655}{9}
+\@LN{656}{9}
+\@LN{657}{9}
+\@LN{658}{9}
+\@LN{659}{9}
+\@LN{660}{9}
+\@LN{661}{9}
+\@LN{662}{9}
+\@LN{663}{9}
+\@writefile{toc}{\contentsline {paragraph}{Annotation and data use.}{10}{section*.43}\protected@file@percent }
+\@LN{664}{9}
+\@LN{665}{9}
+\@LN{666}{9}
+\@LN{667}{9}
+\@LN{668}{9}
+\@LN{669}{9}
+\@LN{670}{9}
+\@LN{671}{9}
+\@LN{672}{9}
+\@LN{673}{9}
+\bibdata{references}
+\bibcite{retrievalrobust2024}{{1}{2024{a}}{{Anonymous}}{{}}}
+\bibcite{minicheck2024}{{2}{2024{b}}{{Anonymous}}{{}}}
+\bibcite{nomiracl2024}{{3}{2024{c}}{{Anonymous}}{{}}}
+\bibcite{whoqa2025}{{4}{2025}{{Anonymous}}{{}}}
+\bibcite{asai2024selfrag}{{5}{2024}{{Asai et~al.}}{{Asai, Wu, Wang, Sil, and Hajishirzi}}}
+\bibcite{bang2023multitask}{{6}{2023}{{Bang et~al.}}{{Bang, Cahyawijaya, Lee et~al.}}}
+\bibcite{brier1950verification}{{7}{1950}{{Brier}}{{}}}
+\bibcite{chen2022rich}{{8}{2022}{{Chen et~al.}}{{Chen, Wang, and Durrett}}}
+\bibcite{chen2023selftransition}{{9}{2023}{{Chen et~al.}}{{Chen, Shi, Gu et~al.}}}
+\bibcite{cohen1960coefficient}{{10}{1960}{{Cohen}}{{}}}
+\bibcite{dubey2024llama3}{{11}{2024}{{Dubey et~al.}}{{Dubey, Jauhri, Pandey et~al.}}}
+\bibcite{dziri2022faithdial}{{12}{2022}{{Dziri et~al.}}{{Dziri, Rashkin, Linzen, and Reitter}}}
+\bibcite{gao2023enabling}{{13}{2023}{{Gao et~al.}}{{Gao, Yen, Yu, and Chen}}}
+\bibcite{geifman2017selective}{{14}{2017}{{Geifman and El-Yaniv}}{{}}}
+\bibcite{guo2017calibration}{{15}{2017}{{Guo et~al.}}{{Guo, Pleiss, Sun, and Weinberger}}}
+\bibcite{kadavath2022language}{{16}{2022}{{Kadavath et~al.}}{{Kadavath, Conerly, Askell et~al.}}}
+\bibcite{dpr2020}{{17}{2020}{{Karpukhin et~al.}}{{Karpukhin, Oguz, Min et~al.}}}
+\bibcite{colbert2020}{{18}{2020}{{Khattab and Zaharia}}{{}}}
+\@LN@col{1}
+\@LN{674}{10}
+\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusion}{11}{section.9}\protected@file@percent }
+\newlabel{sec:conclusion}{{9}{11}{Conclusion}{section.9}{}}
+\@LN{675}{10}
+\@LN{676}{10}
+\@LN{677}{10}
+\@LN{678}{10}
+\@LN{679}{10}
+\@LN{680}{10}
+\@LN{681}{10}
+\@LN{682}{10}
+\@LN{683}{10}
+\@LN{684}{10}
+\@LN{685}{10}
+\@LN{686}{10}
+\@LN{687}{10}
+\@LN{688}{10}
+\@LN{689}{10}
+\@LN{690}{10}
+\@LN{691}{10}
+\@LN{692}{10}
+\@LN{693}{10}
+\@LN{694}{10}
+\@LN{695}{10}
+\@LN{696}{10}
+\@LN{697}{10}
+\@LN{698}{10}
+\@LN{699}{10}
+\@LN{700}{10}
+\@LN{701}{10}
+\@LN{702}{10}
+\@LN{703}{10}
+\@LN{704}{10}
+\@LN{705}{10}
+\@LN{706}{10}
+\@LN{707}{10}
+\@LN{708}{10}
+\@LN{709}{10}
+\@LN{710}{10}
+\@LN{711}{10}
+\@LN{712}{10}
+\@LN{713}{10}
+\@LN{714}{10}
+\@LN{715}{10}
+\@LN{716}{10}
+\@LN{717}{10}
+\@LN{718}{10}
+\@LN{719}{10}
+\@LN{720}{10}
+\@LN{721}{10}
+\@LN{722}{10}
+\@LN{723}{10}
+\@LN@col{2}
+\@LN{724}{10}
+\@LN{725}{10}
+\@LN{726}{10}
+\@LN{727}{10}
+\@LN{728}{10}
+\@LN{729}{10}
+\@LN{730}{10}
+\@LN{731}{10}
+\@LN{732}{10}
+\@LN{733}{10}
+\@LN{734}{10}
+\@LN{735}{10}
+\@LN{736}{10}
+\@LN{737}{10}
+\@LN{738}{10}
+\@LN{739}{10}
+\@LN{740}{10}
+\@LN{741}{10}
+\@LN{742}{10}
+\@LN{743}{10}
+\@LN{744}{10}
+\@LN{745}{10}
+\@LN{746}{10}
+\@LN{747}{10}
+\@LN{748}{10}
+\@LN{749}{10}
+\@LN{750}{10}
+\@LN{751}{10}
+\@LN{752}{10}
+\@LN{753}{10}
+\@LN{754}{10}
+\@LN{755}{10}
+\@LN{756}{10}
+\@LN{757}{10}
+\@LN{758}{10}
+\@LN{759}{10}
+\@LN{760}{10}
+\@LN{761}{10}
+\@LN{762}{10}
+\@LN{763}{10}
+\@LN{764}{10}
+\@LN{765}{10}
+\@LN{766}{10}
+\@LN{767}{10}
+\@LN{768}{10}
+\@LN{769}{10}
+\@LN{770}{10}
+\@LN{771}{10}
+\@LN{772}{10}
+\@LN{773}{10}
+\@LN{774}{10}
+\@LN{775}{10}
+\@LN{776}{10}
+\@LN{777}{10}
+\@LN{778}{10}
+\bibcite{kuhn2023semantic}{{19}{2023}{{Kuhn et~al.}}{{Kuhn, Gal, and Farquhar}}}
+\bibcite{lewis2020rag}{{20}{2020}{{Lewis et~al.}}{{Lewis, Perez, Piktus et~al.}}}
+\bibcite{li2023halueval}{{21}{2023}{{Li et~al.}}{{Li, Cheng, Zhao, Nie, and Wen}}}
+\bibcite{longpre2021entity}{{22}{2021}{{Longpre et~al.}}{{Longpre, Perisetla, Chen et~al.}}}
+\bibcite{mallen2023trust}{{23}{2023}{{Mallen et~al.}}{{Mallen, Asai, Zhong, Das, Khashabi, and Hajishirzi}}}
+\bibcite{maynez2020faithfulness}{{24}{2020}{{Maynez et~al.}}{{Maynez, Narayan, Bohnet, and McDonald}}}
+\bibcite{factscore2023}{{25}{2023}{{Min et~al.}}{{Min, Krishna, Lyu et~al.}}}
+\bibcite{nakano2021webgpt}{{26}{2021}{{Nakano et~al.}}{{Nakano, Hilton, Balwit et~al.}}}
+\bibcite{peng2023check}{{27}{2023}{{Peng et~al.}}{{Peng, Galley, He et~al.}}}
+\bibcite{petroni2019language}{{28}{2019}{{Petroni et~al.}}{{Petroni, Rockt\"{a}schel, Riedel et~al.}}}
+\bibcite{rajpurkar2016squad}{{29}{2016}{{Rajpurkar et~al.}}{{Rajpurkar, Zhang, Lopyrev, and Liang}}}
+\bibcite{reimers2019sentence}{{30}{2019}{{Reimers and Gurevych}}{{}}}
+\bibcite{shi2023large}{{31}{2023}{{Shi et~al.}}{{Shi, Chen, Misra, Scales, Dohan, Chi, Sch\"{a}rli, and Zhou}}}
+\bibcite{thorne2018fever}{{32}{2018}{{Thorne et~al.}}{{Thorne, Vlachos, Christodoulopoulos, and Mittal}}}
+\bibcite{trivedi2023interleaving}{{33}{2023}{{Trivedi et~al.}}{{Trivedi, Balasubramanian, Khot, and Sabharwal}}}
+\bibcite{varshney2022investigating}{{34}{2022}{{Varshney et~al.}}{{Varshney, Mishra, and Baral}}}
+\bibcite{xie2023adaptive}{{35}{2024}{{Xie et~al.}}{{Xie, Zhang, Chen et~al.}}}
+\bibcite{conflictqa2023}{{36}{2023}{{Xie et~al.}}{{Xie, Sun et~al.}}}
+\bibcite{yang2018hotpotqa}{{37}{2018}{{Yang et~al.}}{{Yang, Qi, Zhang et~al.}}}
+\bibcite{zhang2023siren}{{38}{2023}{{Zhang et~al.}}{{Zhang, Li, Cui et~al.}}}
+\@LN@col{1}
+\@LN{779}{11}
+\@LN{780}{11}
+\@LN{781}{11}
+\@LN{782}{11}
+\@LN{783}{11}
+\@LN{784}{11}
+\@LN{785}{11}
+\@LN{786}{11}
+\@LN{787}{11}
+\@LN{788}{11}
+\@LN{789}{11}
+\@LN{790}{11}
+\@LN{791}{11}
+\@LN{792}{11}
+\@LN{793}{11}
+\@LN{794}{11}
+\@LN{795}{11}
+\@LN{796}{11}
+\@LN{797}{11}
+\@LN{798}{11}
+\@LN{799}{11}
+\@LN{800}{11}
+\@LN{801}{11}
+\@LN{802}{11}
+\@LN{803}{11}
+\@LN{804}{11}
+\@LN{805}{11}
+\@LN{806}{11}
+\@LN{807}{11}
+\@LN{808}{11}
+\@LN{809}{11}
+\@LN{810}{11}
+\@LN{811}{11}
+\@LN{812}{11}
+\@LN{813}{11}
+\@LN{814}{11}
+\@LN{815}{11}
+\@LN{816}{11}
+\@LN{817}{11}
+\@LN{818}{11}
+\@LN{819}{11}
+\@LN{820}{11}
+\@LN{821}{11}
+\@LN{822}{11}
+\@LN{823}{11}
+\@LN{824}{11}
+\@LN{825}{11}
+\@LN{826}{11}
+\@LN{827}{11}
+\@LN{828}{11}
+\@LN{829}{11}
+\@LN{830}{11}
+\@LN{831}{11}
+\@LN{832}{11}
+\@LN{833}{11}
+\@LN{834}{11}
+\@LN@col{2}
+\@LN{835}{11}
+\@LN{836}{11}
+\@LN{837}{11}
+\@LN{838}{11}
+\@LN{839}{11}
+\@LN{840}{11}
+\@LN{841}{11}
+\@LN{842}{11}
+\@LN{843}{11}
+\@LN{844}{11}
+\@LN{845}{11}
+\@LN{846}{11}
+\@LN{847}{11}
+\@LN{848}{11}
+\@LN{849}{11}
+\@LN{850}{11}
+\@LN{851}{11}
+\@LN{852}{11}
+\@LN{853}{11}
+\@LN{854}{11}
+\@LN{855}{11}
+\@LN{856}{11}
+\@LN{857}{11}
+\@LN{858}{11}
+\@LN{859}{11}
+\@LN{860}{11}
+\@LN{861}{11}
+\@LN{862}{11}
+\@LN{863}{11}
+\@LN{864}{11}
+\@LN{865}{11}
+\@LN{866}{11}
+\@LN{867}{11}
+\@LN{868}{11}
+\@LN{869}{11}
+\@LN{870}{11}
+\@LN{871}{11}
+\@LN{872}{11}
+\@LN{873}{11}
+\@LN{874}{11}
+\@LN{875}{11}
+\@LN{876}{11}
+\@LN{877}{11}
+\@LN{878}{11}
+\@LN{879}{11}
+\@LN{880}{11}
+\@LN{881}{11}
+\@LN{882}{11}
+\@LN{883}{11}
+\@LN{884}{11}
+\@LN{885}{11}
+\@LN{886}{11}
+\@LN{887}{11}
+\@LN{888}{11}
+\bibcite{zhao2024knowcot}{{39}{2024}{{Zhao et~al.}}{{Zhao, Ni, Liu et~al.}}}
+\bibcite{zhao2021calibrate}{{40}{2021}{{Zhao et~al.}}{{Zhao, Wallace, Feng, Klein, and Singh}}}
+\@LN@col{1}
+\@LN{889}{12}
+\@LN{890}{12}
+\@LN{891}{12}
+\@LN{892}{12}
+\@LN{893}{12}
+\@LN{894}{12}
+\@LN{895}{12}
+\@LN{896}{12}
+\@LN{897}{12}
+\@LN{898}{12}
+\@LN{899}{12}
+\@LN{900}{12}
+\@LN{901}{12}
+\@LN{902}{12}
+\@LN{903}{12}
+\@LN{904}{12}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Reproducibility Details}{13}{appendix.A}\protected@file@percent }
+\newlabel{app:reproducibility}{{A}{13}{Reproducibility Details}{appendix.A}{}}
+\@writefile{toc}{\contentsline {paragraph}{Software and hardware.}{13}{section*.45}\protected@file@percent }
+\@LN{905}{12}
+\@LN{906}{12}
+\@LN{907}{12}
+\@LN{908}{12}
+\@LN{909}{12}
+\@LN{910}{12}
+\@LN{911}{12}
+\@LN{912}{12}
+\@LN{913}{12}
+\@writefile{toc}{\contentsline {paragraph}{Model checkpoints.}{13}{section*.46}\protected@file@percent }
+\@LN{914}{12}
+\@LN{915}{12}
+\@LN{916}{12}
+\@LN{917}{12}
+\@LN{918}{12}
+\@LN{919}{12}
+\@LN{920}{12}
+\@LN{921}{12}
+\@LN{922}{12}
+\@LN{923}{12}
+\@writefile{toc}{\contentsline {paragraph}{Dataset access.}{13}{section*.47}\protected@file@percent }
+\@LN{924}{12}
+\@LN{925}{12}
+\@LN{926}{12}
+\@LN{927}{12}
+\@LN{928}{12}
+\@LN{929}{12}
+\@LN{930}{12}
+\@LN{931}{12}
+\@LN{932}{12}
+\@writefile{toc}{\contentsline {paragraph}{Result files.}{13}{section*.48}\protected@file@percent }
+\@LN{933}{12}
+\@LN{934}{12}
+\@LN{935}{12}
+\@LN{936}{12}
+\@LN{937}{12}
+\@LN@col{2}
+\@LN{938}{12}
+\@LN{939}{12}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Annotation Protocol and Prompt Templates}{13}{appendix.B}\protected@file@percent }
+\newlabel{app:annotation}{{B}{13}{Annotation Protocol and Prompt Templates}{appendix.B}{}}
+\newlabel{app:prompts}{{B}{13}{Annotation Protocol and Prompt Templates}{appendix.B}{}}
+\@writefile{toc}{\contentsline {paragraph}{Policy label annotation.}{13}{section*.49}\protected@file@percent }
+\@LN{940}{12}
+\@LN{941}{12}
+\@LN{942}{12}
+\@LN{943}{12}
+\@LN{944}{12}
+\@LN{945}{12}
+\@LN{946}{12}
+\@LN{947}{12}
+\@LN{948}{12}
+\@LN{949}{12}
+\@LN{950}{12}
+\@LN{951}{12}
+\@LN{952}{12}
+\@LN{953}{12}
+\@LN{954}{12}
+\@LN{955}{12}
+\@LN{956}{12}
+\@LN{957}{12}
+\@LN{958}{12}
+\@LN{959}{12}
+\@LN{960}{12}
+\@LN{961}{12}
+\@LN{962}{12}
+\@LN{963}{12}
+\@LN{964}{12}
+\@LN{965}{12}
+\@writefile{toc}{\contentsline {paragraph}{RAG prompt template.}{13}{section*.50}\protected@file@percent }
+\@LN{966}{12}
+\@LN{967}{12}
+\@LN{968}{12}
+\@LN{969}{12}
+\@LN{970}{12}
+\@LN{971}{12}
+\@LN{972}{12}
+\@LN{973}{12}
+\@LN{974}{12}
+\@LN{975}{12}
+\@LN{976}{12}
+\@writefile{toc}{\contentsline {paragraph}{GPT-4 Verifier prompt.}{13}{section*.51}\protected@file@percent }
+\@LN{977}{12}
+\@LN{978}{12}
+\@LN{979}{12}
+\@LN{980}{12}
+\@LN{981}{12}
+\@LN{982}{12}
+\@LN{983}{12}
+\@LN{984}{12}
+\@LN{985}{12}
+\@LN{986}{12}
+\@LN{987}{12}
+\@LN@col{1}
+\@LN{988}{13}
+\@LN{989}{13}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Protocol Assumptions and Proof Sketches}{14}{appendix.C}\protected@file@percent }
+\@LN{990}{13}
+\@LN{991}{13}
+\@LN{992}{13}
+\@LN{993}{13}
+\@LN{994}{13}
+\@writefile{toc}{\contentsline {paragraph}{Assumption 1: fixed replay trace.}{14}{section*.52}\protected@file@percent }
+\@LN{995}{13}
+\@LN{996}{13}
+\@LN{997}{13}
+\@LN{998}{13}
+\@LN{999}{13}
+\@writefile{toc}{\contentsline {paragraph}{Proposition 1: ledger completeness.}{14}{section*.53}\protected@file@percent }
+\@LN{1000}{13}
+\@LN{1001}{13}
+\@LN{1002}{13}
+\@LN{1003}{13}
+\@LN{1004}{13}
+\@writefile{toc}{\contentsline {paragraph}{Proof sketch.}{14}{section*.54}\protected@file@percent }
+\@LN{1005}{13}
+\@LN{1006}{13}
+\@LN{1007}{13}
+\@LN{1008}{13}
+\@LN{1009}{13}
+\@LN{1010}{13}
+\@LN{1011}{13}
+\@LN{1012}{13}
+\@writefile{toc}{\contentsline {paragraph}{Proposition 2: selective escalation cost bound.}{14}{section*.55}\protected@file@percent }
+\@LN{1013}{13}
+\@LN{1014}{13}
+\@LN{1015}{13}
+\@LN{1016}{13}
+\@LN{1017}{13}
+\@LN{1018}{13}
+\@writefile{toc}{\contentsline {paragraph}{Proof sketch.}{14}{section*.56}\protected@file@percent }
+\@LN{1019}{13}
+\@LN{1020}{13}
+\@LN{1021}{13}
+\@LN{1022}{13}
+\@LN{1023}{13}
+\@writefile{toc}{\contentsline {paragraph}{Reviewer checklist.}{14}{section*.57}\protected@file@percent }
+\@LN{1024}{13}
+\@LN{1025}{13}
+\@LN{1026}{13}
+\@LN{1027}{13}
+\@LN{1028}{13}
+\@writefile{toc}{\contentsline {paragraph}{ConflictRAG-specific obligation.}{14}{section*.58}\protected@file@percent }
+\@LN{1029}{13}
+\@LN{1030}{13}
+\@LN{1031}{13}
+\@LN{1032}{13}
+\@LN{1033}{13}
+\@LN{1034}{13}
+\@LN@col{2}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Extended ablation table. Synthetic example result - replace before submission{}.}}{14}{table.caption.59}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Extended robustness table. Synthetic example result - replace before submission{}.}}{14}{table.caption.60}\protected@file@percent }
+\@LN{1035}{13}
+\@LN{1036}{13}
+\@LN{1037}{13}
+\@LN{1038}{13}
+\@LN{1039}{13}
+\@LN{1040}{13}
+\@writefile{toc}{\contentsline {section}{\numberline {D}Extended Synthetic Tables}{14}{appendix.D}\protected@file@percent }
+\@LN{1041}{13}
+\@LN{1042}{13}
+\@LN{1043}{13}
+\@LN{1044}{13}
+\@writefile{toc}{\contentsline {section}{\numberline {E}Qualitative Examples}{14}{appendix.E}\protected@file@percent }
+\newlabel{app:qualitative}{{E}{14}{Qualitative Examples}{appendix.E}{}}
+\@LN{1045}{13}
+\@LN{1046}{13}
+\@LN{1047}{13}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E.1}Representative Success Cases}{14}{subsection.E.1}\protected@file@percent }
+\@LN{1048}{13}
+\@LN{1049}{13}
+\@LN{1050}{13}
+\@LN{1051}{13}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E.2}Failure Analysis}{14}{subsection.E.2}\protected@file@percent }
+\@LN{1052}{13}
+\@writefile{toc}{\contentsline {paragraph}{Failure Pattern 1: Borderline Cases.}{14}{section*.62}\protected@file@percent }
+\@LN{1053}{13}
+\@LN{1054}{13}
+\@LN{1055}{13}
+\@LN{1056}{13}
+\@LN{1057}{13}
+\@LN{1058}{13}
+\@LN{1059}{13}
+\@LN{1060}{13}
+\@LN{1061}{13}
+\@LN{1062}{13}
+\@LN{1063}{13}
+\@LN@col{1}
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Success cases: ConflictRAG{} correctly handles these examples while the baseline (top-scoring prior method from Table~\ref {tab:main}) fails or expresses lower confidence.}}{15}{table.caption.61}\protected@file@percent }
+\newlabel{tab:qual-success}{{13}{15}{Success cases: \method {} correctly handles these examples while the baseline (top-scoring prior method from Table~\ref {tab:main}) fails or expresses lower confidence}{table.caption.61}{}}
+\@LN{1064}{14}
+\@LN{1065}{14}
+\@LN{1066}{14}
+\@LN{1067}{14}
+\@LN{1068}{14}
+\@LN{1069}{14}
+\@LN{1070}{14}
+\@LN{1071}{14}
+\@LN{1072}{14}
+\@LN{1073}{14}
+\@LN{1074}{14}
+\@LN{1075}{14}
+\@writefile{toc}{\contentsline {paragraph}{Failure Pattern 2: Distribution Shift.}{15}{section*.63}\protected@file@percent }
+\@LN{1076}{14}
+\@LN{1077}{14}
+\@LN{1078}{14}
+\@LN{1079}{14}
+\@LN{1080}{14}
+\@LN{1081}{14}
+\@LN{1082}{14}
+\@LN{1083}{14}
+\@LN{1084}{14}
+\@LN{1085}{14}
+\@LN{1086}{14}
+\@LN{1087}{14}
+\@LN{1088}{14}
+\@LN{1089}{14}
+\@LN{1090}{14}
+\@LN{1091}{14}
+\@LN{1092}{14}
+\@LN{1093}{14}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E.3}Comparison with Best Baseline}{15}{subsection.E.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces Direct comparison on a challenging example where ConflictRAG{}'s four-action policy enables a precise \textsc  {ConflictDisclosure} response, while the best baseline (GPT-4 Verifier) issues a less informative \textsc  {Disclaimer} that does not expose the conflicting values.}}{15}{table.caption.64}\protected@file@percent }
+\newlabel{tab:qual-comparison}{{14}{15}{Direct comparison on a challenging example where \method {}'s four-action policy enables a precise \textsc {ConflictDisclosure} response, while the best baseline (GPT-4 Verifier) issues a less informative \textsc {Disclaimer} that does not expose the conflicting values}{table.caption.64}{}}
+\gdef \@abspage@last{15}
